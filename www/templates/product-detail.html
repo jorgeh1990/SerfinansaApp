@@ -1,0 +1,126 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title='<img class="title-image" src="img/logos-01.png" />' >
+  <ion-content>
+  <span class="nombre" >{{name}}<br />
+    <span class="header-info" >Último ingreso {{ingreso}} Ip: {{ip}}</span></span>
+  <div class="detailsubheader" >
+  	<span class="category" >{{catnames[prod.pitem.Segmento]}} / <span class="spaninline normalfont" >{{prod.pitem.Linea}}</span></span>
+    <p class="normalfont" ng-if="prod.pitem.Segmento_Fact=='04' || prod.pitem.Segmento_Fact=='05' ">{{prod.pitem.Numero | maskNumber}}</p>
+    <p class="normalfont" ng-if="prod.pitem.Segmento_Fact!='04' && prod.pitem.Segmento_Fact!='05'">{{prod.pitem.Numero}}</p>
+  </div>
+  {{mensaje}}
+    <div class="01_view details_box" ng-if="prod.pitem.Segmento_Fact=='01'" >
+        <span class="labelinfo" >Fecha Constitucion: </span><span class="infobox" id="FechaConsti" > {{prod.FechaConsti+'T00:00' | date:'dd/MM/yyyy' }}</span>
+        <span class="labelinfo" >Num CDT: </span><span class="infobox" id="NumCDT" >{{prod.NumCDT}}</span>
+        <span class="labelinfo" >Valor CDT: </span><span class="infobox" id="Valor" >$ {{prod.Valor | number:0}} </span>
+        <span class="labelinfo" >Fecha vencimiento: </span><span class="infobox" id="FechaVenci" >{{prod.FechaVenci+'T00:00' | date:'dd/MM/yyyy'}}</span>
+        <span class="labelinfo" >Frecuencia de pago intereses: </span><span class="infobox" id="FrecPagInt" >{{prod.FrecPagInt}} dias</span>
+        <span class="labelinfo" >Duración CDT: </span><span class="infobox" id="Duracion" >{{prod.Duracion}} dias</span>
+        <span class="labelinfo" >Modalidad intereses: </span><span class="infobox" id="Modalida" >{{prod.Modalida}}</span>
+        <span class="labelinfo" >Tasa nominal: </span><span class="infobox" id="TasaNominal" >{{prod.TasaNominal}}%</span>
+        <span class="labelinfo" >Tasa efectiva: </span><span class="infobox" id="TasaEfectiva" >{{prod.TasaEfectiva}}%</span>
+        <span class="labelinfo" >Estado CDT: </span><span class="infobox" id="Estado" >{{prod.Estado}}</span>
+        <span class="labelinfo" >Próxima cuota de intereses: </span><span class="infobox" id="PrxCuotaInt" >{{prod.PrxCuotaInt+'T00:00' | date:'dd/MM/yyyy'}}</span>
+        <span class="labelinfo" >Valor Intereses: </span><span class="infobox" id="ValorInter" >$ {{prod.ValorInter | number:0}} </span>
+        <span class="labelinfo" >Valor retención: </span><span class="infobox" id="ValorReten" >$ {{prod.ValorReten | number:0}} </span>
+        <span class="labelinfo" >Valor interés neto: </span><span class="infobox" id="ValorInterNeto" >$ {{prod.ValorInterNeto | number:0}} </span>
+    </div>
+    <!-- 02 view LIBRANZA -->
+    <div class="02_view details_box" ng-if="prod.pitem.Segmento_Fact=='02'" >
+        <span class="labelinfo" >Línea de producto: </span><span class="infobox" id="Linea" >{{prod.Linea}}</span>
+        <span class="labelinfo" >Fecha desembolso: </span><span class="infobox" id="Fecha_Desm" >{{prod.Fecha_Desm}}</span>
+        <span class="labelinfo" >Número de crédito: </span><span class="infobox" id="Num_Credito" >{{prod.Num_Credito}}</span>
+        <span class="labelinfo" >Número de Referencia: </span><span class="infobox" id="Num_Referencia" >{{prod.Referencia}}</span>
+        <span class="labelinfo" >Valor desembolso: </span><span class="infobox" id="Valor_Desem" >$ {{prod.Valor_Desem | number:0}} </span>
+        <span class="labelinfo" >Saldo capital: </span><span class="infobox" id="Saldo_Capit" >$ {{prod.Saldo_Capit | number:0}} </span>
+        <span class="labelinfo" >Fecha próximo vencimiento: </span><span class="infobox" id="Fecha_Prox_Venc" >{{prod.Fecha_Prox_Venc}}</span>
+        <span class="labelinfo" >Valor próxima cuota: </span><span class="infobox" id="Valor_Prox_Cuota" >$ {{prod.Valor_Prox_Cuota | number:0}} </span>
+        <span class="labelinfo" >Valor vencido a la fecha: </span><span class="infobox" id="Valor_Venc_Fecha" >$ {{prod.Valor_Venc_Fecha | number:0}} </span>
+        <span class="labelinfo" >Valor de próxima cuota + vencido: </span><span class="infobox" id="Total_Prx_CTMV" >$ {{prod.Total_Prx_CTMV | number:0}} </span>
+        <span class="labelinfo" >Pago total: </span><span class="infobox" id="Pago_Total" >$ {{prod.Pago_Total | number:0}} </span>
+        <div ng-if="ext">
+          <a id="link_ext" href="#/tab/products/extractos/{{prod.Referencia}}"><span class="labelinfo" >Extractos </span><span class="infobox ion-ios-paper-outline"></span></a>
+        </div>
+        <div ng-if="ext">
+          <span class="labelinfo"></span><span class="infobox"></span></a>
+        </div>
+
+    </div>
+    <!-- 03 view DESCUENTOS -->
+    <div class="03_view details_box" ng-if="prod.pitem.Segmento_Fact=='03'" >
+        <span class="labelinfo" >Línea de producto: </span><span class="infobox" id="Linea" >{{prod.Linea}}</span>
+        <span class="labelinfo" >Fecha desembolso: </span><span class="infobox" id="Fecha_Desm" >{{prod.Fecha_Desm+'T00:00' | date:'dd/MM/yyyy'}}</span>
+        <span class="labelinfo" >Número de crédito: </span><span class="infobox" id="Num_Credito" >{{prod.Num_Credito}}</span>
+        <span class="labelinfo" >Valor desembolso: </span><span class="infobox" id="Valor_Desem" >$ {{prod.Valor_Desem | number:0}} </span>
+        <span class="labelinfo" >Documento a descontar: </span><span class="infobox" id="Docu_Descon" >{{prod.Docu_Descon}}</span>
+        <span class="labelinfo" >Fecha próximo vencimiento: </span><span class="infobox" id="Fecha_Prox_Venc" >{{prod.Fecha_Prox_Venc+'T00:00' | date:'dd/MM/yyyy'}}</span>
+        <span class="labelinfo" >Saldo capital: </span><span class="infobox" id="Saldo_Capit" >$ {{prod.Saldo_Capit | number:0}} </span>
+        <span class="labelinfo" >Girador del cheque: </span><span class="infobox" id="Girador" >{{prod.Girador}}</span>
+        <span class="labelinfo" >Estado del documento: </span><span class="infobox" id="Estado_Docu" >{{prod.Estado_Docu}}</span>
+    </div>
+    <!-- 04 view CRO -->
+    <div class="04_view details_box" ng-if="prod.pitem.Segmento_Fact=='04'" >
+        <span class="labelinfo" >Fecha limite: </span><span class="infobox" id="FecLimPago" >{{prod.FecLimPago+'T00:00' | date:'dd/MM/yyyy'}}</span>
+        <span class="labelinfo" >Pago Minimo: </span><span class="infobox" id="PagoMinino" >$ {{prod.PagoMinimo| number:0}} </span>
+        <span class="labelinfo" >Pago Minimo Vencido: </span><span class="infobox" id="PagoMinino" >$ {{prod.PagoMinimoVencido| number:0}} </span>
+        <span class="labelinfo" >Pago Total: </span><span class="infobox" id="PagoTotal" >$ {{prod.PagoTotal | number:0}} </span>
+        <span class="labelinfo" >Disponible Total: </span><span class="infobox" id="DispoTotal" >$ {{prod.DispoTotal | number:0}} </span>
+        <span class="labelinfo" >Disponible Avances: </span><span class="infobox" id="DiscpoAvan" >$ {{prod.DiscpoAvan | number:0}} </span>
+        <span class="labelinfo" >Estado Tarjeta: </span><span class="infobox" id="EstaTarjeta" >{{prod.EstaTarjeta}}</span>
+
+        <!--<span class="labelinfo" >Fecha Emision: </span><span ng-if="prod.FechaEmision!='0'" class="infobox" id="FechaEmision" >{{prod.FechaEmision+'T00:00' | date:'dd/MM/yyyy'}}</span>-->
+        <span class="labelinfo" >Referencia: </span><span  class="infobox" id="NumRef">{{prod.NumeroReferencia}}</span>
+        <!--<span ng-if="prod.FechaEmision=='0'" class="infobox" id="FechaEmision" >-</span>-->
+        <span class="labelinfo" >Tipo: </span><span class="infobox" id="Tipo" >{{prod.Tipo}}</span>
+        <div ng-if="ext">
+          <a id="link_ext" href="#/tab/products/extractos/{{prod.pitem.Numero}}"><span class="labelinfo" >Extractos </span><span class="infobox ion-ios-paper-outline"></span></a>
+        </div>
+        <div class="movimientos_cro" >
+        	<h4>Movimientos</h4>
+			<div class="padding-2" ng-repeat="mov in prod.Movimientos">
+       			 <div class="row no-padding" >
+              		<div class="col no-padding movdate">{{mov.Fecha+'T00:00' | date:'dd/MM/yyyy'}}</div>
+                 </div>
+                 <div class="row no-padding" >
+                    <div class="col col-50 no-padding movdesc">{{mov.DescripTrans}}</div>
+                    <div class="col col-50 no-padding movvalor">$ {{mov.Valor | number:0}} </div>
+	            </div>
+
+           <!-- </ion-list>-->
+        </div>
+    </div>
+  </div>
+
+
+  <!-- 05 CTA Ahorro-->
+  <div class="05_view details_box" ng-if="prod.pitem.Segmento_Fact=='05'" >
+    <span class="labelinfo">Saldo Canje: </span><span class="infobox" id="SaldoCanje" >$ {{prod.SaldoCanje| number:0}} </span>
+    <span class="labelinfo">Saldo Disponible: </span><span class="infobox" id="SaldoDisponible" >$ {{prod.SaldoDisponible| number:0}} </span>
+    <span class="labelinfo">Saldo M&iacute;nimo: </span><span class="infobox" id="SaldoMinimo" >$ {{prod.SaldoMinimo| number:0}} </span>
+    <span class="labelinfo">Saldo Retenido: </span><span class="infobox" id="SaldoRetenido" >$ {{prod.SaldoRetenido| number:0}} </span>
+    <span class="labelinfo">Saldo Neto: </span><span class="infobox" id="SaldoNeto" >$ {{prod.SaldoNeto| number:0}} </span>
+    <span class="labelinfo">Saldo Total: </span><span class="infobox" id="SaldoTotal" >$ {{prod.SaldoTotal| number:0}} </span>
+
+      <div class="movimientos_cro" >
+        <h4>Movimientos</h4>
+    <div class="padding-2" ng-repeat="mov in prod.Movimientos">
+           <div class="row no-padding" >
+                <div class="col no-padding movdate">{{mov.Fecha+'T00:00' | date:'dd/MM/yyyy'}}</div>
+               </div>
+               <div class="row no-padding" >
+                  <div class="col col-50 no-padding movdesc">{{mov.DescripTrans}}</div>
+                  <div class="col col-50 no-padding movvalor">$ {{mov.Valor | number:0}} </div>
+            </div>
+
+         <!-- </ion-list>-->
+      </div>
+  </div>
+</div>
+
+  </ion-content>
+</ion-view>

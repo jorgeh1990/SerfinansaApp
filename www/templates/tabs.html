@@ -1,0 +1,35 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-nav-buttons side="right">
+  <button class="button" ng-click="doSomething()">
+    I'm a button on the primary of the navbar!
+  </button>
+</ion-nav-buttons>
+<ion-tabs class="tabs-bottom tabs-icon-top tabs-color-active-positive">
+
+  <!-- Products Tab -->
+  <ion-tab title="Productos" icon-off="ser_products_w72" icon-on="ser_products72" href="#/tab/products/cat">
+    <ion-nav-view name="tab-products"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Services Tab -->
+  <ion-tab title="Servicios" icon-off="ser_services_w72" icon-on="ser_services72" href="#/tab/servicios">
+    <ion-nav-view name="tab-servicios"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="Desembolso" icon-off="ser_desembolso_w72" icon-on="ser_desembolso72" href="#/tab/desembolso">
+    <ion-nav-view name="tab-desembolso"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="Seguridad" icon-off="ser_seguridad_w72" icon-on="ser_seguridad72" href="#/tab/seguridad">
+    <ion-nav-view name="tab-seguridad"></ion-nav-view>
+  </ion-tab>
+
+
+
+</ion-tabs>

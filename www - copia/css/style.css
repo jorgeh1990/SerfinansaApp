@@ -1,0 +1,44 @@
+/* Empty. Add your own CSS if you like */
+
+.tabs .tab-item .icon.ser_products {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Productos.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_products_w {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Productosw.png');
+  background-size:contain;
+}
+
+.pull-right{
+	float: right;
+}
+.pull-left{
+	float: left;
+}
+
+a .icon-accessory{
+	color: #E2232A !important;
+	font-size: 30px !important;
+}
+
+ion-header-bar {
+	background-color: #006598 !important;
+	color: white !important;
+}
+
+.title.header-item{
+	color: white !important;
+}
+
+.item-content h2{
+	font-weight: bold;
+}
+
+.labelinfo{
+	font-weight: bold;
+}

@@ -1,0 +1,66 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{prod.Linea}}">
+  <ion-content class="padding">
+    <div class="01_view details_box" ng-if="prod.Segmento=='01'" >
+        <span class="labelinfo" >Fecha Constitucion: </span><span class="infobox" id="FechaConsti" >{{prod.FechaConsti}}</span><br />
+        <span class="labelinfo" >Num CDT: </span><span class="infobox" id="NumCDT" >{{prod.NumCDT}}</span><br />
+        <span class="labelinfo" >Valor CDT: </span><span class="infobox" id="Valor" >{{prod.Valor}}</span><br />
+        <span class="labelinfo" >Fecha vencimiento: </span><span class="infobox" id="FechaVenci" >{{prod.FechaVenci}}</span><br />
+        <span class="labelinfo" >Frecuencia de pago intereses: </span><span class="infobox" id="FrecPagInt" >{{prod.FrecPagInt}}</span><br />
+        <span class="labelinfo" >Duración CDT: </span><span class="infobox" id="Duracion" >{{prod.Duracion}}</span><br />
+        <span class="labelinfo" >Modalidad intereses: </span><span class="infobox" id="Modalida" >{{prod.Modalida}}</span><br />
+        <span class="labelinfo" >Tasa nominal: </span><span class="infobox" id="TasaNominal" >{{prod.TasaNominal}}</span><br />
+        <span class="labelinfo" >Tasa efectiva: </span><span class="infobox" id="TasaEfectiva" >{{prod.TasaEfectiva}}</span><br />
+        <span class="labelinfo" >Estado CDT: </span><span class="infobox" id="Estado" >{{prod.Estado}}</span><br />
+        <span class="labelinfo" >Próxima cuota de intereses: </span><span class="infobox" id="PrxCuotaInt" >{{prod.PrxCuotaInt}}</span><br />
+        <span class="labelinfo" >Valor Intereses: </span><span class="infobox" id="ValorInter" >{{prod.ValorInter}}</span><br />
+        <span class="labelinfo" >Valor retención: </span><span class="infobox" id="ValorReten" >{{prod.ValorReten}}</span><br />
+        <span class="labelinfo" >Valor interés neto: </span><span class="infobox" id="ValorInterNeto" >{{prod.ValorInterNeto}}</span><br />
+    </div>
+    <!-- 02 view LIBRANZA -->
+    <div class="02_view details_box" ng-if="prod.Segmento=='02'" >
+        <span class="labelinfo" >Línea de producto: </span><span class="infobox" id="Linea" >{{prod.Linea}}</span><br />
+        <span class="labelinfo" >Fecha desembolso: </span><span class="infobox" id="Fecha_Desm" >{{prod.Fecha_Desm}}</span><br />
+        <span class="labelinfo" >Número de crédito: </span><span class="infobox" id="Num_Credito" >{{prod.Num_Credito}}</span><br />
+        <span class="labelinfo" >Valor desembolso: </span><span class="infobox" id="Valor_Desem" >{{prod.Valor_Desem}}</span><br />
+        <span class="labelinfo" >Saldo capital: </span><span class="infobox" id="Saldo_Capit" >{{prod.Saldo_Capit}}</span><br />
+        <span class="labelinfo" >Fecha próximo vencimiento: </span><span class="infobox" id="Fecha_Prox_Venc" >{{prod.Fecha_Prox_Venc}}</span><br />
+        <span class="labelinfo" >Valor próxima cuota: </span><span class="infobox" id="Valor_Prox_Cuota" >{{prod.Valor_Prox_Cuota}}</span><br />
+        <span class="labelinfo" >Valor vencido a la fecha: </span><span class="infobox" id="Valor_Venc_Fecha" >{{prod.Valor_Venc_Fecha}}</span><br />
+        <span class="labelinfo" >Valor de próxima cuota + vencido: </span><span class="infobox" id="Total_Prx_CTMV" >{{prod.Total_Prx_CTMV}}</span><br />
+        <span class="labelinfo" >Pago total: </span><span class="infobox" id="Pago_Total" >{{prod.Pago_Total}}</span><br />
+        
+    </div>            
+    <!-- 03 view DESCUENTOS -->
+    <div class="03_view details_box" ng-if="prod.Segmento=='03'" >
+        <span class="labelinfo" >Línea de producto: </span><span class="infobox" id="Linea" >{{prod.Linea}}</span><br />
+        <span class="labelinfo" >Fecha desembolso: </span><span class="infobox" id="Fecha_Desm" >{{prod.Fecha_Desm}}</span><br />
+        <span class="labelinfo" >Número de crédito: </span><span class="infobox" id="Num_Credito" >{{prod.Num_Credito}}</span><br />
+        <span class="labelinfo" >Valor desembolso: </span><span class="infobox" id="Valor_Desem" >{{prod.Valor_Desem}}</span><br />
+        <span class="labelinfo" >Documento a descontar: </span><span class="infobox" id="Docu_Descon" >{{prod.Docu_Descon}}</span><br />
+        <span class="labelinfo" >Fecha próximo vencimiento: </span><span class="infobox" id="Fecha_Prox_Venc" >{{prod.Fecha_Prox_Venc}}</span><br />
+        <span class="labelinfo" >Saldo capital: </span><span class="infobox" id="Saldo_Capit" >{{prod.Saldo_Capit}}</span><br />
+        <span class="labelinfo" >Girador del cheque: </span><span class="infobox" id="Girador" >{{prod.Girador}}</span><br />
+        <span class="labelinfo" >Estado del documento: </span><span class="infobox" id="Estado_Docu" >{{prod.Estado_Docu}}</span><br />
+    </div>
+    <!-- 04 view CRO -->
+    <div class="04_view details_box" ng-if="prod.Segmento=='04'" >
+        <span class="labelinfo" >Fecha limite: </span><span class="infobox" id="FecLimPago" >{{prod.FecLimPago}}</span><br />
+        <span class="labelinfo" >Pago Minimo: </span><span class="infobox" id="PagoMinino" >{{prod.PagoMinino}}</span><br />
+        <span class="labelinfo" >Pago Total: </span><span class="infobox" id="PagoTotal" >{{prod.PagoTotal}}</span><br />
+        <span class="labelinfo" >Disponible Total: </span><span class="infobox" id="DispoTotal" >{{prod.DispoTotal}}</span><br />
+        <span class="labelinfo" >Disponible Avances: </span><span class="infobox" id="DiscpoAvan" >{{prod.DiscpoAvan}}</span><br />
+        <span class="labelinfo" >Estado Tarjeta: </span><span class="infobox" id="EstaTarjeta" >{{prod.EstaTarjeta}}</span><br />
+        <span class="labelinfo" >Fecha Emision: </span><span class="infobox" id="FechaEmision" >{{prod.FechaEmision}}</span><br />
+        <span class="labelinfo" >Tipo: </span><span class="infobox" id="Tipo" >{{prod.Tipo}}</span><br />
+        <div class="movimientos_cro" >
+        
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

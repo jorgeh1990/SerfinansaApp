@@ -1,0 +1,25 @@
+
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />' >
+  <ion-content class="">
+  <span class="nombre" >{{name}}<br />
+    <span class="header-info" >Último ingreso {{ingreso}} Ip: {{ip}}</span></span>
+    <div class="list">
+        <label class="item item-input">
+        	<input type="password" pattern="[0-9]*" inputmode="numeric" placeholder="Pin" ng-model="pin" maxlength="4">
+        </label>
+        <label class="item item-input">
+        	<input type="password" pattern="[0-9]*" inputmode="numeric" placeholder="Repita el Pin" ng-model="pin2" maxlength="4">
+        </label>
+
+        <button class="button button-block button-positive" ng-click="Activar(pin,pin2)">
+        	Activar PIN
+        </button>
+    </div>
+  </ion-content>
+</ion-view>

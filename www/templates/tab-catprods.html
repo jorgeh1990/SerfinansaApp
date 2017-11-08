@@ -1,0 +1,15 @@
+<ion-view view-title='<img class="title-image" src="img/logos-01.png" />' >
+  <ion-content>
+  	<span class="nombre" >{{name}}<br />
+    <span class="header-info" >Último ingreso {{ingreso}} Ip: {{ip}}</span></span>
+    </span>
+
+    <ion-list>
+      <ion-item class="item-remove-animate item-icon-left item-icon-right" ng-repeat="cat in catprods" type="item-text-wrap" href="#/tab/products/cat/{{ cat.seg.join('-') }}">
+      	<i class="icon ion-checkmark icon-gray"></i>
+        <h2>{{cat.name}}</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

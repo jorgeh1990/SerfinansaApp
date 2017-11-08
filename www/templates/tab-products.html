@@ -1,0 +1,40 @@
+<ion-view view-title='<img class="title-image" src="img/logos-01.png" />'>
+  <ion-content>
+    <span class="nombre">{{name}}<br />
+    <span class="header-info" >Último ingreso {{ingreso}} Ip: {{ip}}</span></span>
+    <div ng-if="filterResults!='01-05' ">
+      <ion-list>
+        <div ng-repeat="prod in products | filterProducts: filterResults">
+          <ion-item class="item-remove-animate item-icon-left item-icon-right products" ng-if="prod.Segmento_Fact!='01'" type="item-text-wrap" ng-click="viewProduct(prod.Numero)">
+            <h2>{{prod.Linea}}</h2>
+            <p class="pull-left itemsubheader" ng-if="prod.Segmento_Fact=='04' || prod.Segmento_Fact=='05'">{{prod.Numero | maskNumber}}</p>
+            <p class="pull-left itemsubheader" ng-if="prod.Segmento_Fact!='04' && prod.Segmento_Fact!='05'">{{prod.Numero}}</p>
+            <p class="pull-right itemsubheader">$ {{prod.Valor | number:0}}</p>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+    <div ng-if="filterResults=='01-05'">
+      <ion-list>
+        <div ng-if="getTotalCdts()!=0">
+          <ion-item class="item-remove-animate item-icon-left item-icon-right products" type="item-text-wrap" ng-click="viewCdtList()">
+            <h2>CDT's</h2>
+            <p class="pull-left itemsubheader" ng-if="prod.Segmento_Fact!='04'">Total:</p>
+            <p class="pull-right itemsubheader">$ {{getTotalCdts() | number:0}}</p>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+          </ion-item>
+        </div>
+        <div ng-if="getTotalCTAH()!=0">
+          <ion-item class="item-remove-animate item-icon-left item-icon-right products" type="item-text-wrap" ng-click="viewAhorroList()">
+            <h2>Ahorros</h2>
+            <p class="pull-left itemsubheader" ng-if="prod.Segmento_Fact!='04'">Total:</p>
+            <p class="pull-right itemsubheader">$ {{getTotalCTAH() | number:0}}</p>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+
+  </ion-content>
+</ion-view>

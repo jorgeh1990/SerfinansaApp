@@ -1,0 +1,27 @@
+<ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />'>
+  <div>
+    <ion-nav-back-button class="button-clear">
+      <i class="ion-arrow-left-c"></i>
+    </ion-nav-back-button>
+  </div>
+  <div class="bar bar-subheader bar-assertive">
+    <h2 class="title">Creacion de usuario</h2>
+  </div>
+  <ion-content class="center padding has-header has-subheader">
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" placeholder="Usuario" ng-model="user" ng-trim="true" required onKeypress="if (event.keyCode == 32) event.returnValue = false;" ng-trim="false" ng-maxlength="12" maxlength="12">
+      </label>
+      <label class="item item-input">
+        <input type="password" pattern="[0-9]*" inputmode="numeric" placeholder="Clave de 4 digitos numéricos" ng-model="pass" maxlength="4" required>
+      </label>
+      <label class="item item-input">
+        <input type="password" pattern="[0-9]*" inputmode="numeric" placeholder="Confrime clave" ng-model="confirmPass" required maxlength="4">
+      </label>
+
+      <button class="button button-block button-positive btn-login padding-box margin" ng-click="create(user, pass, confirmPass)">
+        Crear
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

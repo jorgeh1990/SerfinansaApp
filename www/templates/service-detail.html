@@ -1,0 +1,17 @@
+<ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />'>
+  <ion-content>
+    <span class="nombre">{{name}}<br />
+    <span class="header-info" >Último ingreso {{ingreso}} Ip: {{ip}}</span>
+    </span>
+
+    <ion-list>
+
+      <ion-item class="item-remove-animate item-avatar item-icon-left item-icon-right" ng-repeat="item in bloqueables" type="item-text-wrap" ng-click="showConfirm()">
+        <i class="icon ion-checkmark icon-gray"></i>
+        <h2>Bloquear {{item.Linea}}</h2>
+        <p class="pull-left itemsubheader" ng-if="item.Segmento_Fact=='04'">{{item.Numero | maskNumber}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

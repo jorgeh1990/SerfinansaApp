@@ -1,0 +1,10 @@
+<ion-view view-title="Serfinansa">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="serv in services" type="item-text-wrap" href="#/tab/services/{{serv.id}}">        
+        <h2>{{serv.name}}</h2>        
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

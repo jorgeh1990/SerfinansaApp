@@ -1,0 +1,27 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title='<img class="title-image" src="img/logos-01.png" />' >
+  <ion-content class="">
+  <span class="nombre" >{{name}}<br />
+    <span class="header-info" >Ip: {{ip}}</span>
+    <span class="header-info" >Último ingreso {{ingreso}}</span>
+  </span>
+  <label class="item item-input">
+    <input type="email" placeholder="Email" ng-model="document.Email"  />
+  </label>
+     <ion-list>
+        <ion-item>
+          <p>Mes:</p>
+          <select ng-model="selectedItem" ng-options="detalle.FechaDescrip for detalle in extr.Detalle"></select>
+          <button class="button button-block button-positive btn-login padding-box margin" ng-click="EnviarExtMail(document.Email,selectedItem)">
+            Enviar por Email
+          </button>
+        </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

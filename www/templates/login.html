@@ -1,0 +1,54 @@
+<ion-view view-title="Serfinansa" hide-nav-bar="true" cache-view="false">
+  <div on-size-changed="logResize" class="loginBackgroundPanel" id="loginBackgroundPanel" style="{{borStyles}}"></div>
+  <ion-content class="padding  center">
+    <div class="subheader_wrap">
+      <img src="img/logo.png" width="100%" />
+
+    </div>
+    <h3 class="subheader">INSPIRADOS EN <br />TUS SUEÑOS </h3>
+    <div class="list">
+      {{mensaje}}
+      <label class="item-input-wrapper item-input login_label item-icon-left usuariolabel">
+        <i class="icon ion-person"></i>
+        <input type="text" onKeypress="if (event.keyCode == 32) event.returnValue = false;" ng-trim="false" placeholder="Usuario" ng-model='usuario' name="usuario">
+      </label>
+      <label class="item-input-wrapper item-input login_label item-icon-left">
+        <i class="icon ion-key"></i>
+        <input type="password" pattern="[0-9]*" inputmode="numeric" placeholder="Contraseña" ng-model='pass' name="pass" ng-maxlength="4" maxlength="4">
+      </label>
+
+    </div>
+
+    <button class="button button-block button-positive btn-login" ng-click="signin(usuario, pass)">
+      Ingresar
+    </button>
+    <p class="text-center links">
+      <b><a href="#/auth/olvidopass">Olvidó la clave &nbsp;&nbsp;&nbsp; | </a>&nbsp;&nbsp;&nbsp;<a href="#/auth/registroval">Registro en l&iacute;nea  </a>  </b>
+    </p>
+    <p class="text-center links">
+      <b><a>&nbsp;&nbsp;&nbsp;<a href="#/auth/recusuario">Recuperar usuario</a></b>
+    </p>
+    <div class="subheader_wrap">
+      <a href="#" onclick="window.open('http://www.serfinansa.com.co/', '_system', 'location=yes'); return false;">
+        <img class="banner" src="https://app.serfinansa.com.co/img/image_banner_app.png" width="100%" />
+      </a>
+    </div>
+
+  </ion-content>
+  <div class="tabs tabs-bot tabs-icon-top " keyboard-handler>
+    <a class="tab-item" href="#/auth/oficinas">
+      <i class="icon ser_oficinas_72"></i> Oficinas
+    </a>
+    <a class="tab-item" href="#/auth/contacto">
+      <i class="icon ser_contacto_72"></i> Contacto
+    </a>
+    <a class="tab-item" href="#/auth/condiciones">
+      <i class="icon ser_condiciones_72"></i> Condiciones
+    </a>
+  </div>
+  </ionicView>
+  <script>
+    $(document).on('keydown', '#usuario', function(e) {
+      if (e.keyCode == 32) return false;
+    });
+  </script>

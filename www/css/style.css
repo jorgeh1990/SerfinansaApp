@@ -1,0 +1,524 @@
+/* Empty. Add your own CSS if you like */
+
+body {
+	font-family: "myroboto";
+}
+
+.banner {
+    max-width: 80%;
+    height: auto;
+		align-content: center;
+		position:  relative !important;
+		bottom: 38px;
+}
+
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+.tabs .tab-item .icon.ser_products {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Productos.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_products_w {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Productosw.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_services {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Servicios.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_services_w {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Serviciosw.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_desembolso {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Desembolsos.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_desembolso_w {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Desembolsosw.png');
+  background-size:contain;
+}
+
+#link_ext{
+	color: blue;
+	font-weight: bold;
+}
+
+
+.tabs .tab-item .icon.ser_seguridad {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Seguridad.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_seguridad_w {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Seguridadw.png');
+  background-size:contain;
+}
+
+
+.tabs .tab-item .icon.ser_oficinas {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Oficinas.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_oficinas_w {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/48x48_Oficinasw.png');
+  background-size:contain;
+}
+
+/*************************************** 72 px icons ******************************/
+
+.tabs .tab-item .icon.ser_products72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/72x72_Productos.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_products_w72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/72x72_Productosw.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_services72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/72x72_Servicios.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_services_w72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/72x72_Serviciosw.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_desembolso72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/72x72_Desembolsos.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_desembolso_w72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/72x72_Desembolsosw.png');
+  background-size:contain;
+}
+
+
+.tabs .tab-item .icon.ser_seguridad72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/72x72_Seguridad.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_seguridad_w72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/72x72_Seguridadw.png');
+  background-size:contain;
+}
+
+
+.tabs .tab-item .icon.ser_oficinas72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/72x72_Oficinas.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_oficinas_w72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/72x72_Oficinasw.png');
+  background-size:contain;
+}
+
+/*Iconos del pantalla de login*/
+.tabs .tab-item .icon.ser_oficinas_72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/oficinas.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_portafolio_72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/portafolio.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.ser_contacto_72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/contacto.png');
+  background-size:contain;
+}
+.tabs .tab-item .icon.ser_condiciones_72 {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('../img/iconos72/condiciones.png');
+  background-size:contain;
+}
+
+/*************************************************************/
+
+.tab-item .icon{
+	height: 50px !important;
+
+}
+a.tab-item{
+	font-size:100px;
+	background: transparent-back !important;
+	opacity: 1 !important;
+	border: none;
+	color: #0C539A;
+	border-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+}
+
+div.tabs {
+	height: 75px !important;
+	opacity: 1 !important;
+	color: #0C539A;
+	border: 0px;
+	border-color: transparent !important;
+	border-top: transparent  !important;
+	border-bottom: transparent  !important;
+	background-image: none !important;
+	background-color: rgba(0, 0, 0, 0);
+	width: 100%;
+	align-items: center;
+}
+
+
+div.tab-nav.tabs {
+	height: 75px !important;
+	background: white !important;
+}
+
+.pull-right{
+	float: right;
+}
+.pull-left{
+	float: left;
+}
+
+a .icon-accessory, .products .icon-accessory{
+	color: #E21F26 !important;
+	font-size: 20px !important;
+}
+
+ion-header-bar {
+	background-color: #0068AB !important;
+	color: white !important;
+}
+
+.transparent-back{
+
+}
+
+.title.header-item{
+	color: white !important;
+}
+
+.item-content h2{
+	font-weight: 700;
+	margin: auto 0;
+	color: #666666;
+}
+a.item-content{
+	display: flex !important;
+	display: -webkit-flex !important;
+}
+
+.icon-gray {
+	color: #e6e6e6 !important;
+	font-size: 20px !important;
+}
+
+.labelinfo{
+	font-weight: normal;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.scroll {
+  height: 100%;
+}
+
+.labelinfo{
+	display: block;
+	/*background-color: #f2f2f2;*/
+	padding: 15px 0;
+	text-align:left;
+	float:left;
+}
+
+.infobox{
+	display:block;
+	/*background-color: #f2f2f2;*/
+	padding: 15px 0;
+	text-align: right;
+	/*margin-bottom: 5px;*/
+	font-weight:bold;
+}
+
+.details_box span, .credito_rota span{
+	font-size:11px;
+	font-weight:bold;
+	border-bottom: 1px solid #e6e6e6;
+	/*color: #666666;*/
+	padding: 10px;
+}
+
+.itemsubheader{
+	font-size: 12px !important;
+}
+
+.nombre{
+	display:block;
+	font-weight: normal;
+	font-size: 18px;
+	text-align:left;
+	color: black;
+	padding: 10px;
+	background-color:#E6E6E6;
+}
+
+.text_left{
+	text-align: right;
+}
+
+.header_table div{
+	text-align: center;
+}
+
+.text_center{
+	text-align: center;
+}
+
+.subheader{
+	text-align:center;
+	color: #27509F;
+	font-weight:lighter;
+	font-size: 18px;
+	font-weight:bold;
+
+}
+
+.subheaderblue{
+	text-align:center;
+	color:  #0068AB;
+	font-weight:lighter;
+	font-size: 18px;
+	font-weight:bold;
+}
+
+
+.btn-login {
+	background-color: #064378 !important;
+	border: none !important;
+	font-weight:bold;
+}
+
+.loginview{
+	/**background-color: #165F94;**/
+	padding: 30px !important;
+}
+
+.olvidoview{
+	padding: 15px !important;
+}
+
+.login_label{
+	background-color: white !important;
+	border: 1px solid white !important;
+	/*border-bottom: 1px solid #84AAC6 !important;*/
+}
+
+.login_label input{
+	padding-left: 40px;
+	color: ##999999 !important;
+	text-align:left;
+}
+
+.login_label i{
+	color: #999999 !important;
+}
+
+.links a{
+	color: #999999 !important;
+	text-decoration:none !important;
+}
+
+.login_label input::-webkit-input-placeholder {
+  color: #999999;
+}
+.login_label input:-moz-placeholder {
+  color: #999999;
+}
+.login_label input:-ms-input-placeholder { /* IE10+ */
+  color: #999999;
+}
+
+.white_icon i{
+	color: white;
+}
+
+.loginBackgroundPanel{
+	width: 100%;
+	height: 100%;
+	/**border-top: 240px solid #094F80;
+	border-right: 160px solid #094F80;
+	border-left: 160px solid #0A548B;
+	border-bottom: 240px solid #165F94;**/
+}
+
+.no-padding{
+	padding: 0 !important;
+}
+
+.movdate{
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.movdesc{
+	font-size: 10px;
+}
+
+.movvalor{
+	font-size: 14px;
+	font-weight:bold;
+	color:#06C;
+	text-align: right;
+}
+
+.padding-2{
+	padding: 2px 0;
+}
+
+.no-border{
+	border: none !important;
+}
+
+.subheader_wrap{
+	padding-top: 30px !important;
+	text-align:center;
+  height: 110px;
+	margin: 0 auto;
+}
+
+.subheader_wrap img{
+	max-width: 328px;
+}
+
+.detailsubheader span{
+	display: block;
+}
+
+.detailsubheader p{
+	display: block;
+	margin-bottom: 0px !important;
+}
+
+.detailsubheader{
+	background-color:#0068AB;
+	padding:10px;
+	color: white;
+	font-weight:bold;
+}
+
+.spaninline{
+	display: inline !important;
+}
+
+.normalfont{
+	font-weight: 400 !important;
+}
+
+.movimientos_cro h4{
+	text-align:center;
+	color: #B21;
+}
+
+.movimientos_cro {
+	padding: 10px;
+}
+
+.title-image{
+	width: 100%;
+	max-width: 217px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.loginview.ionic-scroll {
+	display: table !important;
+	height: 100% !important;
+	width: 100% !important;
+}
+
+.loginview .scroll{
+	display:table-cell !important;
+	vertical-align:middle !important;
+}
+
+.header-info{
+	font-size: 12px;
+	text-align: left;
+	padding: 0;
+	display: block;
+}
+
+.usuariolabel {
+	margin-bottom: 20px;
+}

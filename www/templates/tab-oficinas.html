@@ -1,0 +1,19 @@
+<ion-view view-title='<img class="title-image" src="img/logos-01.png" />'>
+  <ion-content>
+    <span class="nombre">{{name}}<br />
+    <span class="header-info" >Último ingreso {{ingreso}} Ip: {{ip}}</span></span>
+    <!--<ion-select label="Ciudades" label-field="ciud" provider="ciudades"  ng-model="ciudad"/>-->
+    <ion-list>
+      <div ng-repeat="ciudad in ciudades">
+        <ion-item class="item-stable" ng-click="toggleGroup(ciudad)" ng-class="{active: isGroupShown(ciudad)}">
+          <i class="icon" ng-class="isGroupShown(ciudad) ? 'ion-minus' : 'ion-plus'"></i> &nbsp; {{ciudad.Nombre}}
+        </ion-item>
+        <ion-item class="item-accordion item-remove-animate" ng-repeat="oficina in ciudad.Oficinas" ng-show="isGroupShown(ciudad)">
+          <b><h2>{{oficina.Nombre}}</h2></b>
+          <label class="itemsubheader">{{oficina.Direccion}}</label><br/>
+          <label class="itemsubheader" ng-repeat="tel in oficina.Telefonos ">{{tel}}{{$last ? '' : ' - '}}</label>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

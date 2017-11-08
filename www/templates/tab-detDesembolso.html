@@ -1,0 +1,29 @@
+<ion-view view-title='<img class="title-image" src="img/logos-01.png" />'>
+  <ion-content>
+    <span class="nombre">{{name}}<br />
+    <span class="header-info" >Último ingreso {{ingreso}} Ip: {{ip}}</span></span>
+    {{mensaje}}
+    <div class="credito_rota" ng-if="tieneCred">
+      <h4>Solicitar Crédito Rotativo</h4>
+
+      <span class="labelinfo">Crédito Origen: </span><span class="infobox">&nbsp; {{credito.Numero_Tarjeta}}</span>
+      <span class="labelinfo">Disponible: </span><span class="infobox">$ {{credito.Disponible | number:0}} </span>
+      <span class="labelinfo">Nombre de Banco: </span><span class="infobox">&nbsp;{{credito.Codigo_de_banco }}-{{credito.Nombre_de_banco}}</span>
+      <span class="labelinfo">Cuenta Destino: </span><span class="infobox">&nbsp; {{credito.Cuenta_destino | maskNumber}}</span>
+      <div class="movimientos_cro">
+
+        <label class="item item-input">
+          <input type="number" placeholder="Monto" ng-model="monto">
+        </label>
+
+        <a class="button button-block button-positive" ng-click="solicitar(monto)">
+                Solicitar Crédito
+            </a>
+      </div>
+    </div>
+
+    <div class="" ng-if="!tieneCred">
+      {{credito.descripcion}}
+    </div>
+  </ion-content>
+</ion-view>

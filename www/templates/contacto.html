@@ -1,0 +1,20 @@
+<ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />'>
+  <div>
+    <ion-nav-back-button class="button-clear">
+      <i class="ion-arrow-left-c"></i>
+    </ion-nav-back-button>
+  </div>
+  <div class="bar bar-subheader bar-assertive">
+    <h2 class="title">Teléfonos de contactos</h2>
+  </div>
+  <ion-content class="center padding has-header has-subheader">
+    <ion-list>
+      <div ng-repeat="contacto in contactos">
+        <ion-item class="item-stable" >
+          <h3>{{contacto.id}}. {{contacto.ciudad}}</h3>
+          <h4>{{contacto.telefono}}</h4>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>
