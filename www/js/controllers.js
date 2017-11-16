@@ -175,10 +175,7 @@ angular.module('starter.controllers', [])
       return $scope.shownGroup === group;
     };
 
-
-
   });
-
 })
 
 .controller('ContactoCtrl', function($scope, Contactos, $localstorage, $ionicLoading, $compile, $rootScope, $loading, $alert) {
