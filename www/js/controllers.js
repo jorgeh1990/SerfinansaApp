@@ -260,7 +260,6 @@ angular.module('starter.controllers', [])
             }
           }
         }
-
         $scope.updateProducts();
         $loading.hide();
       } else {
