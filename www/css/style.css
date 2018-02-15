@@ -275,6 +275,8 @@ a.item-content{
 	display: flex !important;
 	display: -webkit-flex !important;
 }
+a .extracto{
+}
 
 .icon-gray {
 	color: #e6e6e6 !important;
@@ -294,12 +296,32 @@ a.item-content{
   height: 100%;
 }
 
+.column {
+    float: left;
+    padding: 10px;
+}
+
+.left {
+  width: 60%;
+}
+
+.right {
+  width: 40%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .labelinfo{
 	display: block;
 	/*background-color: #f2f2f2;*/
 	padding: 15px 0;
 	text-align:left;
-	float:left;
+	float: left;
 }
 
 .infobox{
@@ -386,7 +408,7 @@ a.item-content{
 
 .login_label input{
 	padding-left: 40px;
-	color: ##999999 !important;
+	color: #999999 !important;
 	text-align:left;
 }
 

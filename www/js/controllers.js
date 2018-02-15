@@ -175,7 +175,10 @@ angular.module('starter.controllers', [])
       return $scope.shownGroup === group;
     };
 
+
+
   });
+
 })
 
 .controller('ContactoCtrl', function($scope, Contactos, $localstorage, $ionicLoading, $compile, $rootScope, $loading, $alert) {
@@ -231,7 +234,7 @@ angular.module('starter.controllers', [])
         $scope.products = response;
         // filter categorias
         for (var i = 0; i < response.length; i++) {
-          if(response[i].Numero.startsWith("543280") || response[i].Numero.startsWith("542060") ){
+          if(response[i].Numero.match("^543280") || response[i].Numero.match("^542060") ){
             $localstorage.setObject('master_cta', response[i]);
           }
         }
@@ -260,6 +263,7 @@ angular.module('starter.controllers', [])
             }
           }
         }
+
         $scope.updateProducts();
         $loading.hide();
       } else {

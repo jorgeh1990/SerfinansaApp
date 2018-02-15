@@ -15,34 +15,84 @@
   </div>
   {{mensaje}}
     <div class="01_view details_box" ng-if="prod.pitem.Segmento_Fact=='01'" >
-        <span class="labelinfo" >Fecha Constitucion: </span><span class="infobox" id="FechaConsti" > {{prod.FechaConsti+'T00:00' | date:'dd/MM/yyyy' }}</span>
-        <span class="labelinfo" >Num CDT: </span><span class="infobox" id="NumCDT" >{{prod.NumCDT}}</span>
-        <span class="labelinfo" >Valor CDT: </span><span class="infobox" id="Valor" >$ {{prod.Valor | number:0}} </span>
-        <span class="labelinfo" >Fecha vencimiento: </span><span class="infobox" id="FechaVenci" >{{prod.FechaVenci+'T00:00' | date:'dd/MM/yyyy'}}</span>
-        <span class="labelinfo" >Frecuencia de pago intereses: </span><span class="infobox" id="FrecPagInt" >{{prod.FrecPagInt}} dias</span>
-        <span class="labelinfo" >Duración CDT: </span><span class="infobox" id="Duracion" >{{prod.Duracion}} dias</span>
-        <span class="labelinfo" >Modalidad intereses: </span><span class="infobox" id="Modalida" >{{prod.Modalida}}</span>
-        <span class="labelinfo" >Tasa nominal: </span><span class="infobox" id="TasaNominal" >{{prod.TasaNominal}}%</span>
-        <span class="labelinfo" >Tasa efectiva: </span><span class="infobox" id="TasaEfectiva" >{{prod.TasaEfectiva}}%</span>
-        <span class="labelinfo" >Estado CDT: </span><span class="infobox" id="Estado" >{{prod.Estado}}</span>
-        <span class="labelinfo" >Próxima cuota de intereses: </span><span class="infobox" id="PrxCuotaInt" >{{prod.PrxCuotaInt+'T00:00' | date:'dd/MM/yyyy'}}</span>
-        <span class="labelinfo" >Valor Intereses: </span><span class="infobox" id="ValorInter" >$ {{prod.ValorInter | number:0}} </span>
-        <span class="labelinfo" >Valor retención: </span><span class="infobox" id="ValorReten" >$ {{prod.ValorReten | number:0}} </span>
-        <span class="labelinfo" >Valor interés neto: </span><span class="infobox" id="ValorInterNeto" >$ {{prod.ValorInterNeto | number:0}} </span>
+        <div class="row">
+            <span class="labelinfo column left" >Fecha Constitucion: </span><span class="infobox column right" id="FechaConsti" > {{prod.FechaConsti+'T00:00' | date:'dd/MM/yyyy' }}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Num CDT: </span><span class="infobox column right" id="NumCDT" >{{prod.NumCDT}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Valor CDT: </span><span class="infobox column right" id="Valor" >$ {{prod.Valor | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Fecha vencimiento: </span><span class="infobox column right" id="FechaVenci" >{{prod.FechaVenci+'T00:00' | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Frecuencia de pago intereses: </span><span class="infobox column right" id="FrecPagInt" >{{prod.FrecPagInt}} dias</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Duración CDT: </span><span class="infobox column right" id="Duracion" >{{prod.Duracion}} dias</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Modalidad intereses: </span><span class="infobox column right" id="Modalida" >{{prod.Modalida}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Tasa nominal: </span><span class="infobox column right" id="TasaNominal" >{{prod.TasaNominal}}%</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Tasa efectiva: </span><span class="infobox column right" id="TasaEfectiva" >{{prod.TasaEfectiva}}%</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Estado CDT: </span><span class="infobox column right" id="Estado" >{{prod.Estado}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Próxima cuota de intereses: </span><span class="infobox column right" id="PrxCuotaInt" >{{prod.PrxCuotaInt+'T00:00' | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Valor Intereses: </span><span class="infobox column right" id="ValorInter" >$ {{prod.ValorInter | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Valor retención: </span><span class="infobox column right" id="ValorReten" >$ {{prod.ValorReten | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Valor interés neto: </span><span class="infobox column right" id="ValorInterNeto" >$ {{prod.ValorInterNeto | number:0}} </span>
+        </div>
     </div>
     <!-- 02 view LIBRANZA -->
     <div class="02_view details_box" ng-if="prod.pitem.Segmento_Fact=='02'" >
-        <span class="labelinfo" >Línea de producto: </span><span class="infobox" id="Linea" >{{prod.Linea}}</span>
-        <span class="labelinfo" >Fecha desembolso: </span><span class="infobox" id="Fecha_Desm" >{{prod.Fecha_Desm}}</span>
-        <span class="labelinfo" >Número de crédito: </span><span class="infobox" id="Num_Credito" >{{prod.Num_Credito}}</span>
-        <span class="labelinfo" >Número de Referencia: </span><span class="infobox" id="Num_Referencia" >{{prod.Referencia}}</span>
-        <span class="labelinfo" >Valor desembolso: </span><span class="infobox" id="Valor_Desem" >$ {{prod.Valor_Desem | number:0}} </span>
-        <span class="labelinfo" >Saldo capital: </span><span class="infobox" id="Saldo_Capit" >$ {{prod.Saldo_Capit | number:0}} </span>
-        <span class="labelinfo" >Fecha próximo vencimiento: </span><span class="infobox" id="Fecha_Prox_Venc" >{{prod.Fecha_Prox_Venc}}</span>
-        <span class="labelinfo" >Valor próxima cuota: </span><span class="infobox" id="Valor_Prox_Cuota" >$ {{prod.Valor_Prox_Cuota | number:0}} </span>
-        <span class="labelinfo" >Valor vencido a la fecha: </span><span class="infobox" id="Valor_Venc_Fecha" >$ {{prod.Valor_Venc_Fecha | number:0}} </span>
-        <span class="labelinfo" >Valor de próxima cuota + vencido: </span><span class="infobox" id="Total_Prx_CTMV" >$ {{prod.Total_Prx_CTMV | number:0}} </span>
-        <span class="labelinfo" >Pago total: </span><span class="infobox" id="Pago_Total" >$ {{prod.Pago_Total | number:0}} </span>
+        <div class="row">
+            <span class="labelinfo column left" >Línea de producto: </span><span class="infobox column right" id="Linea" >{{prod.Linea}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Fecha desembolso: </span><span class="infobox column right" id="Fecha_Desm" >{{prod.Fecha_Desm}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Número de crédito: </span><span class="infobox column right" id="Num_Credito" >{{prod.Num_Credito}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Número de Referencia: </span><span class="infobox column right" id="Num_Referencia" >{{prod.Referencia}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Valor desembolso: </span><span class="infobox column right" id="Valor_Desem" >$ {{prod.Valor_Desem | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Saldo capital: </span><span class="infobox column right" id="Saldo_Capit" >$ {{prod.Saldo_Capit | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Fecha próximo vencimiento: </span><span class="infobox column right" id="Fecha_Prox_Venc" >{{prod.Fecha_Prox_Venc}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Valor próxima cuota: </span><span class="infobox column right" id="Valor_Prox_Cuota" >$ {{prod.Valor_Prox_Cuota | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Valor vencido a la fecha: </span><span class="infobox column right" id="Valor_Venc_Fecha" >$ {{prod.Valor_Venc_Fecha | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Valor de próxima cuota + vencido: </span><span class="infobox column right" id="Total_Prx_CTMV" >$ {{prod.Total_Prx_CTMV | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Pago total: </span><span class="infobox column right" id="Pago_Total" >$ {{prod.Pago_Total | number:0}} </span>
+        </div>
         <div ng-if="ext">
           <a id="link_ext" href="#/tab/products/extractos/{{prod.Referencia}}"><span class="labelinfo" >Extractos </span><span class="infobox ion-ios-paper-outline"></span></a>
         </div>
@@ -53,33 +103,70 @@
     </div>
     <!-- 03 view DESCUENTOS -->
     <div class="03_view details_box" ng-if="prod.pitem.Segmento_Fact=='03'" >
-        <span class="labelinfo" >Línea de producto: </span><span class="infobox" id="Linea" >{{prod.Linea}}</span>
-        <span class="labelinfo" >Fecha desembolso: </span><span class="infobox" id="Fecha_Desm" >{{prod.Fecha_Desm+'T00:00' | date:'dd/MM/yyyy'}}</span>
-        <span class="labelinfo" >Número de crédito: </span><span class="infobox" id="Num_Credito" >{{prod.Num_Credito}}</span>
-        <span class="labelinfo" >Valor desembolso: </span><span class="infobox" id="Valor_Desem" >$ {{prod.Valor_Desem | number:0}} </span>
-        <span class="labelinfo" >Documento a descontar: </span><span class="infobox" id="Docu_Descon" >{{prod.Docu_Descon}}</span>
-        <span class="labelinfo" >Fecha próximo vencimiento: </span><span class="infobox" id="Fecha_Prox_Venc" >{{prod.Fecha_Prox_Venc+'T00:00' | date:'dd/MM/yyyy'}}</span>
-        <span class="labelinfo" >Saldo capital: </span><span class="infobox" id="Saldo_Capit" >$ {{prod.Saldo_Capit | number:0}} </span>
-        <span class="labelinfo" >Girador del cheque: </span><span class="infobox" id="Girador" >{{prod.Girador}}</span>
-        <span class="labelinfo" >Estado del documento: </span><span class="infobox" id="Estado_Docu" >{{prod.Estado_Docu}}</span>
+        <div class="row">
+            <span class="labelinfo column left" >Línea de producto: </span><span class="infobox column right" id="Linea" >{{prod.Linea}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Fecha desembolso: </span><span class="infobox column right" id="Fecha_Desm" >{{prod.Fecha_Desm+'T00:00' | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Número de crédito: </span><span class="infobox column right" id="Num_Credito" >{{prod.Num_Credito}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Valor desembolso: </span><span class="infobox column right" id="Valor_Desem" >$ {{prod.Valor_Desem | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Documento a descontar: </span><span class="infobox column right" id="Docu_Descon" >{{prod.Docu_Descon}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Fecha próximo vencimiento: </span><span class="infobox column right" id="Fecha_Prox_Venc" >{{prod.Fecha_Prox_Venc+'T00:00' | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Saldo capital: </span><span class="infobox column right" id="Saldo_Capit" >$ {{prod.Saldo_Capit | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Girador del cheque: </span><span class="infobox column right" id="Girador" >{{prod.Girador}}</span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left" >Estado del documento: </span><span class="infobox column right" id="Estado_Docu" >{{prod.Estado_Docu}}</span>
+        </div>
     </div>
     <!-- 04 view CRO -->
     <div class="04_view details_box" ng-if="prod.pitem.Segmento_Fact=='04'" >
-        <span class="labelinfo" >Fecha limite: </span><span class="infobox" id="FecLimPago" >{{prod.FecLimPago+'T00:00' | date:'dd/MM/yyyy'}}</span>
-        <span class="labelinfo" >Pago Minimo: </span><span class="infobox" id="PagoMinino" >$ {{prod.PagoMinimo| number:0}} </span>
-        <span class="labelinfo" >Pago Minimo Vencido: </span><span class="infobox" id="PagoMinino" >$ {{prod.PagoMinimoVencido| number:0}} </span>
-        <span class="labelinfo" >Pago Total: </span><span class="infobox" id="PagoTotal" >$ {{prod.PagoTotal | number:0}} </span>
-        <span class="labelinfo" >Disponible Total: </span><span class="infobox" id="DispoTotal" >$ {{prod.DispoTotal | number:0}} </span>
-        <span class="labelinfo" >Disponible Avances: </span><span class="infobox" id="DiscpoAvan" >$ {{prod.DiscpoAvan | number:0}} </span>
-        <span class="labelinfo" >Estado Tarjeta: </span><span class="infobox" id="EstaTarjeta" >{{prod.EstaTarjeta}}</span>
-
-        <!--<span class="labelinfo" >Fecha Emision: </span><span ng-if="prod.FechaEmision!='0'" class="infobox" id="FechaEmision" >{{prod.FechaEmision+'T00:00' | date:'dd/MM/yyyy'}}</span>-->
-        <span class="labelinfo" >Referencia: </span><span  class="infobox" id="NumRef">{{prod.NumeroReferencia}}</span>
-        <!--<span ng-if="prod.FechaEmision=='0'" class="infobox" id="FechaEmision" >-</span>-->
-        <span class="labelinfo" >Tipo: </span><span class="infobox" id="Tipo" >{{prod.Tipo}}</span>
-        <div ng-if="ext">
-          <a id="link_ext" href="#/tab/products/extractos/{{prod.pitem.Numero}}"><span class="labelinfo" >Extractos </span><span class="infobox ion-ios-paper-outline"></span></a>
+        <div class="row">
+            <span class="labelinfo column left column left" >Fecha limite: </span><span class="infobox column right column right" id="FecLimPago" >{{prod.FecLimPago+'T00:00' | date:'dd/MM/yyyy'}}</span>
         </div>
+        <div class="row">
+            <span class="labelinfo column left column left" >Pago Minimo: </span><span class="infobox column right column right" id="PagoMinino" >$ {{prod.PagoMinimo| number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left column left" >Pago Minimo Vencido: </span><span class="infobox column right column right" id="PagoMinino" >$ {{prod.PagoMinimoVencido| number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left column left" >Pago Total: </span><span class="infobox column right column right" id="PagoTotal" >$ {{prod.PagoTotal | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left column left" >Disponible Total: </span><span class="infobox column right column right" id="DispoTotal" >$ {{prod.DispoTotal | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left column left" >Disponible Avances: </span><span class="infobox column right column right" id="DiscpoAvan" >$ {{prod.DiscpoAvan | number:0}} </span>
+        </div>
+        <div class="row">
+            <span class="labelinfo column left column left" >Estado Tarjeta: </span><span class="infobox column right column right" id="EstaTarjeta" >{{prod.EstaTarjeta}}</span>
+        </div>
+
+        <!--<span class="labelinfo column left" >Fecha Emision: </span><span ng-if="prod.FechaEmision!='0'" class="infobox column right" id="FechaEmision" >{{prod.FechaEmision+'T00:00' | date:'dd/MM/yyyy'}}</span>-->
+        <div class="row">
+            <span class="labelinfo column left column left" >Referencia: </span><span  class="infobox column right column right" id="NumRef">{{prod.NumeroReferencia}}</span>
+        </div>
+        <!--<span ng-if="prod.FechaEmision=='0'" class="infobox column right" id="FechaEmision" >-</span>-->
+        <div class="row">
+            <span class="labelinfo column left column left" >Tipo: </span><span class="infobox column right column right" id="Tipo" >{{prod.Tipo}}</span>
+        </div>
+            <div ng-if="ext">
+                    <a  href="#/tab/products/extractos/{{prod.pitem.Numero}}"><span class="labelinfo" >Extractos </span><span class="infobox ion-ios-paper-outline "></span></a>
+
+            </div>
         <div class="movimientos_cro" >
         	<h4>Movimientos</h4>
 			<div class="padding-2" ng-repeat="mov in prod.Movimientos">
@@ -99,12 +186,24 @@
 
   <!-- 05 CTA Ahorro-->
   <div class="05_view details_box" ng-if="prod.pitem.Segmento_Fact=='05'" >
-    <span class="labelinfo">Saldo Canje: </span><span class="infobox" id="SaldoCanje" >$ {{prod.SaldoCanje| number:0}} </span>
-    <span class="labelinfo">Saldo Disponible: </span><span class="infobox" id="SaldoDisponible" >$ {{prod.SaldoDisponible| number:0}} </span>
-    <span class="labelinfo">Saldo M&iacute;nimo: </span><span class="infobox" id="SaldoMinimo" >$ {{prod.SaldoMinimo| number:0}} </span>
-    <span class="labelinfo">Saldo Retenido: </span><span class="infobox" id="SaldoRetenido" >$ {{prod.SaldoRetenido| number:0}} </span>
-    <span class="labelinfo">Saldo Neto: </span><span class="infobox" id="SaldoNeto" >$ {{prod.SaldoNeto| number:0}} </span>
-    <span class="labelinfo">Saldo Total: </span><span class="infobox" id="SaldoTotal" >$ {{prod.SaldoTotal| number:0}} </span>
+      <div class="row">
+        <span class="labelinfo column left">Saldo Canje: </span><span class="infobox column right" id="SaldoCanje" >$ {{prod.SaldoCanje| number:0}} </span>
+      </div>
+      <div class="row">
+        <span class="labelinfo column left">Saldo Disponible: </span><span class="infobox column right" id="SaldoDisponible" >$ {{prod.SaldoDisponible| number:0}} </span>
+      </div>
+      <div class="row">
+        <span class="labelinfo column left">Saldo M&iacute;nimo: </span><span class="infobox column right" id="SaldoMinimo" >$ {{prod.SaldoMinimo| number:0}} </span>
+      </div>
+      <div class="row">
+        <span class="labelinfo column left">Saldo Retenido: </span><span class="infobox column right" id="SaldoRetenido" >$ {{prod.SaldoRetenido| number:0}} </span>
+      </div>
+      <div class="row">
+        <span class="labelinfo column left">Saldo Neto: </span><span class="infobox column right" id="SaldoNeto" >$ {{prod.SaldoNeto| number:0}} </span>
+      </div>
+      <div class="row">
+        <span class="labelinfo column left">Saldo Total: </span><span class="infobox column right" id="SaldoTotal" >$ {{prod.SaldoTotal| number:0}} </span>
+      </div>
 
       <div class="movimientos_cro" >
         <h4>Movimientos</h4>
