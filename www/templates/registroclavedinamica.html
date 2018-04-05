@@ -1,0 +1,23 @@
+<ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />' >
+  <ion-content >
+  <span class="nombre" >{{name}}<br />
+    <span class="header-info" >Ip: {{ip}}</span>
+    <span class="header-info" >Último ingreso {{ingreso}}</span>
+  </span>
+  <div class=" padding center">
+      <label class="item-input-wrapper item-input input1 item-icon-left">
+        <i class="icon ion-iphone"></i>
+        <input type="text" placeholder="N&uacute;mero celular" ng-model='registro.celular'></input>
+      </label>
+
+      <label class="item-input-wrapper item-input input1 item-icon-left">
+        <i class="icon ion-ios-email"></i>
+        <input type="email" placeholder="Correo electronico" ng-model='registro.email'></input>
+      </label>
+
+        <button class="button1" ng-click="registrar(registro)">
+        	Registar
+        </button>
+  </div>
+  </ion-content>
+</ion-view>

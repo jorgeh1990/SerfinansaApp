@@ -586,7 +586,13 @@ angular.module('starter.controllers', [])
   });
   var seguridad = [{
     id: 0,
-    name: 'Cambio de Contraseña'
+    name: 'Cambio de contraseña',
+    url: 'cambiopass'
+  },
+  {
+    id: 1,
+    name: 'Registro a clave dínamica',
+    url: 'registroclavedinamica'
   }];
   $scope.seguridad = seguridad;
 
@@ -1031,5 +1037,76 @@ angular.module('starter.controllers', [])
       }
     }
 
-  });
+  })
+
+  .controller('GiroController', function($scope, $state, $stateParams,$ionicHistory , $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
+    $scope.$on('$ionicView.beforeEnter', function(e) {
+        if(!$stateParams.autorizado){
+            $ionicHistory.clearCache().then(function(){
+              $state.go('clavedinamica',{stateBack:'tab.servicios', stateForward:'tab.ColcarGiro'});
+            });
+        }
+    });
+
+    $scope.continuar= function(beneficiario){
+      if (typeof beneficiario != 'undefined'){
+        var giro;
+          Giros.Consultar(beneficiario).then(function(respuesta){
+            if (respuesta.correcto){
+              giro =  respuesta.giro;
+            }
+          });
+
+      }else {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Giramas',
+          template: 'Debe llenar todos los campos'
+        });
+      }
+    }
+
+    $scope.back= function(){
+      $ionicHistory.clearCache().then(function(){ $state.go('tab.servicios') })
+    }
+  })
+
+  .controller('ClaveDinamicaCtrl', function($scope, $state,$ionicHistory, $stateParams, $localstorage, $window, $loading, $alert) {
+    $scope.$on('$ionicView.beforeEnter', function(e) {
+      $scope.name = $localstorage.getObject('user').nombre;
+      $scope.ip = $localstorage.getObject('user').ip;
+      $scope.ingreso = $localstorage.getObject('user').ingreso;
+
+    });
+
+    $scope.back = function(){
+        $ionicHistory.clearCache().then(function(){$state.go($stateParams.stateBack);
+        })
+    }
+
+    $scope.validar = function(claveDinamica){
+        $ionicHistory.clearCache().then(function(){
+            $state.go($stateParams.stateForward,{autorizado:true});
+        })
+    }
+
+
+  })
+  .controller('RegistroClaveDinamicaCtrl', function($scope, $state, $stateParams, $localstorage, $window, $loading, $alert,$ionicPopup) {
+    $scope.$on('$ionicView.beforeEnter', function(e) {
+      $scope.name = $localstorage.getObject('user').nombre;
+      $scope.ip = $localstorage.getObject('user').ip;
+      $scope.ingreso = $localstorage.getObject('user').ingreso;
+
+    });
+
+    $scope.back = function(){
+      $state.go($stateParams.state);
+    }
+
+
+
+
+  })
+
+  ;
 var testController;

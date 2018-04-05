@@ -31,11 +31,9 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
 
   $rootScope.logout = function() {
     console.log("loging out user");
-    $localstorage.setObject('user', {
-      id: 0,
-      nombre: ''
-    });
+    $localstorage.clear();
     Idle.unwatch();
+    $state.go('auth.login');
   };
 
 
@@ -264,6 +262,19 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
     }
   })
 
+  .state('tab.ColcarGiro', {
+    url: '/servicios/ColcarGiro',
+    views: {
+      'tab-servicios': {
+        templateUrl: 'templates/giros.html',
+        controller: 'GiroController',
+      }
+    },
+    params: {
+      autorizado:false
+    }
+  })
+
   .state('tab.servdetail-opcion', {
     url: '/servicios/:servId/:ServOpc',
     views: {
@@ -286,7 +297,7 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
 
   .state('tab.cambiopass', {
     cache: false,
-    url: '/seguridad/:segId',
+    url: '/seguridad/cambiopass',
     views: {
       'tab-seguridad': {
         templateUrl: 'templates/cambio-pass.html',
@@ -294,6 +305,26 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
       }
     }
   })
+
+  .state('tab.registroclavedinamica', {
+    cache: false,
+    url: '/seguridad/registroclavedinamica',
+    views:{
+        'tab-seguridad': {
+          templateUrl: 'templates/registroclavedinamica.html',
+          controller: 'RegistroClaveDinamicaCtrl'
+        }
+    }
+  })
+
+  .state('clavedinamica', {
+    cache: false,
+    url: '/clavedinamica/:stateBack/:stateForward',
+    templateUrl: 'templates/clavedinamica.html',
+    controller: 'ClaveDinamicaCtrl'
+  })
+
+
 
   .state('tab.product-desembolso', {
     url: '/desembolso',

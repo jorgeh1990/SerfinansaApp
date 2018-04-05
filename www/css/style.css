@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
 
 body {
-	font-family: "myroboto";
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .banner {
@@ -10,6 +10,42 @@ body {
 		align-content: center;
 		position:  relative !important;
 		bottom: 38px;
+}
+
+.label1{
+	font-size: 13px !important;
+}
+
+.input1 {
+		font-size: 13px !important;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+		box-sizing: border-box;
+	  border-color: #999999 !important;
+}
+.input1 i{
+    color: #999999 !important;
+}
+
+.button1 {
+		background-color: #064378 !important;
+		border: none !important;
+		font-weight:bold;
+    color: white;
+    padding: 10px 24px;
+		border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+		width: 100%;
+}
+
+.contenedor{
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 .list .item.item-accordion {

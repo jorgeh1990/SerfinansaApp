@@ -1,0 +1,56 @@
+
+
+<ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />' >
+<ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="back()" >
+    <i class="icon ion-ios-arrow-back" style="color: white;"></i></button>
+ </ion-nav-buttons>
+<div class="bar bar-subheader bar-assertive">
+  <h2 class="title">Giramas</h2>
+</div>
+  <ion-content class="has-header has-subheader">
+    <ion-item class="item-text-wrap">
+         <h3>El valor total del giro se debitara a su tarjeta de credito.</h3>
+    </ion-item>
+  <div class="padding center">
+    <div class="card">
+      <div class="item item-divider">
+        Beneficiario
+      </div>
+    <div>
+      <div class="list">
+        <label class="item item-input item-select">
+          <div class="input-label label1">
+            Tipo de documento
+          </div>
+        <select ng-model='beneficiario.tipo_id_beneficiario'>
+          <option class="label1" value="CC" selected>C&eacute;dula</option>
+          <option class="label1" value="Nit">Nit</option>
+        </select>
+       </label>
+
+       <label class="item item-input">
+         <input class="input1" type="text" placeholder="N&uacute;mero de identificaci&oacute;n" ng-model='beneficiario.id_beneficiario'>
+       </label>
+
+       <label class="item item-input">
+         <input class="input1" type="text" inputmode="text" placeholder="Nombre" ng-model='beneficiario.nombre_beneficiario'>
+       </label>
+       <label class="item item-input">
+         <input class="input1" type="number" placeholder="Celular" pattern="[0-9]*" inputmode="numeric" ng-minlenght="10" minlenght="10" ng-maxlength="10" maxlength="10" ng-model='beneficiario.celular_beneficiario'>
+       </label>
+       <label class="item item-input">
+         <input class="input1" type="number" placeholder="Valor" pattern="[0-9]*" inputmode="numeric" min="20000" max="700000"  ng-model='beneficiario.valor'>
+       </label>
+     </div>
+
+    </div>
+      <div class="item item-divider">
+        <button class="button1" ng-click="continuar(beneficiario)">
+          Continuar
+        </button>
+      </div>
+    </div>
+  </div>
+  </ion-content>
+</ion-view>

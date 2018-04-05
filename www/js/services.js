@@ -250,17 +250,21 @@ angular.module('starter.services', [])
   .factory('Servicios', function($http, $localstorage, $rootScope) {
     var services = [{
       id: 0,
-      name: 'Bloqueo de Tarjetas de Crédito',
+      name: 'Bloqueo de tarjetas de crédito',
       endPoint: 'loadBloqueoTCRO',
       url: 'bloqueo'
     }, {
       id: 1,
-      name: 'Activación de Tarjeta',
+      name: 'Activación de tarjeta',
       url: 'activacion'
     },{
       id: 2,
-      name: 'Activación Clave de Avance Tarjeta Mastercard',
+      name: 'Activación clave de avance tarjeta MasterCard',
       url: 'master-actpin'
+    },{
+      id: 3,
+      name: 'Colocar giro',
+      url: 'ColcarGiro'
     }];
     //,{id: 2, name: 'Bloqueo Tarjeta Débito'}
     var tcros = [];
@@ -507,6 +511,42 @@ angular.module('starter.services', [])
   }
 
   return service;
+})
+
+.factory('Giros', function($http, $rootScope, $localstorage) {
+  var usuario = $localstorage.getObject('user');
+
+  return {
+    Consultar: function(data) {
+      data.tipo_id_girador=usuario.tipodc;
+      data.id_girador=usuario.id;
+      data.nombre_girador=usuario.nombre;
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Giros/Consultar',
+        method: 'POST',
+        data: data,
+        headers: {
+          'Authorization': 'Bearer '+ usuario.token,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      };
+
+      var promise = $http(reqData).then(function(response) {
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = JSON.stringify(error);
+        }
+        return {
+          error: true,
+          mensaje: error.Message
+        };
+      });
+      return promise;
+    }
+  }
+
 })
 
 .factory('UsrAuth', function($http, $rootScope) {
@@ -802,7 +842,9 @@ angular.module('starter.services', [])
     return promise;
   };
   return service;
-});
+})
+
+
 
 angular.module('ionic.utils', [])
 
@@ -819,6 +861,9 @@ angular.module('ionic.utils', [])
     },
     getObject: function(key) {
       return JSON.parse($window.localStorage[key] || '{}');
+    },
+    clear: function (){
+      $window.localStorage.clear();
     }
   }
 }])
@@ -827,7 +872,7 @@ angular.module('ionic.utils', [])
   return {
     show: function() {
       $ionicLoading.show({
-        template: '<ion-spinner icon="android"></ion-spinner><br />'
+        template: '<ion-spinner icon="dots"></ion-spinner><br />'
       });
     },
     hide: function() {
