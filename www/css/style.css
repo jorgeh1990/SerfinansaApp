@@ -553,11 +553,23 @@ a .extracto{
 }
 
 .title-image{
-	width: 100%;
+	width: auto;
 	max-width: 217px;
-	padding-bottom: 20px;
-	margin-bottom: 20px;
+	height: 100%;
 }
+
+.title-image-header{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 40%;
+	height: 100%;
+}
+
+.bar-serfinansa{
+	background-color: #0068AB;
+}
+
 
 .loginview.ionic-scroll {
 	display: table !important;

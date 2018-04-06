@@ -8,7 +8,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controllers', 'starter.services', 'starter.filters', 'ionic.utils', 'starter.directives'])
 
-.run(function($ionicPlatform, $localstorage, $rootScope, $state, Idle, $ionicPopup,$ionicPush,$http) {
+.run(function($ionicPlatform,$ionicModal, $ionicHistory,$window, $localstorage, $rootScope, $state, Idle, $ionicPopup,$ionicPush,$http) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -31,11 +31,22 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
 
   $rootScope.logout = function() {
     console.log("loging out user");
+    $rootScope.modal.hide();
+    $state.go('auth.login');
     $localstorage.clear();
     Idle.unwatch();
-    $state.go('auth.login');
   };
 
+  $ionicModal.fromTemplateUrl('templates/clavedinamica.html', {
+    scope: $rootScope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+   $rootScope.modal = modal;
+  });
+
+  $rootScope.validar=function(){
+    $rootScope.modal.hide();
+  }
 
 
   $rootScope.events = [];
@@ -86,7 +97,7 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
   $rootScope.checkIfUserIsLoged = function() {
     var user = $localstorage.getObject('user');
     if (user.id == 0) {
-      $state.go('auth.login');
+      //$state.go('auth.login');
     }
   };
 
@@ -125,6 +136,9 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
      console.log(msg.title);
   });
 
+$rootScope.onTabSelected=function(){
+  $state.go('tab.servicios');
+}
 
 
 
@@ -165,9 +179,10 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
+    cache: false,
     templateUrl: 'templates/tabs.html'
   })
 
@@ -234,6 +249,7 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
 
   .state('tab.servicio-detail', {
     url: '/servicios/bloqueo',
+    cache: false,
     views: {
       'tab-servicios': {
         templateUrl: 'templates/service-detail.html',
@@ -244,6 +260,7 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
 
   .state('tab.activar-tarjeta', {
     url: '/servicios/activacion',
+    cache: false,
     views: {
       'tab-servicios': {
         templateUrl: 'templates/activar-tarjeta.html',
@@ -254,6 +271,7 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
 
   .state('tab.activar-masterpin', {
     url: '/servicios/master-actpin',
+    cache: false,
     views: {
       'tab-servicios': {
         templateUrl: 'templates/master-actpin.html',
@@ -264,19 +282,29 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
 
   .state('tab.ColcarGiro', {
     url: '/servicios/ColcarGiro',
+    cache: false,
     views: {
       'tab-servicios': {
         templateUrl: 'templates/giros.html',
         controller: 'GiroController',
       }
-    },
-    params: {
-      autorizado:false
+    }
+  })
+
+  .state('tab.ConfirmarGiro', {
+    url: '/servicios/ConfirmarGiro',
+    cache: false,
+    views: {
+      'tab-servicios': {
+        templateUrl: 'templates/confirmarGiro.html',
+        controller: 'ConfirGiroController',
+      }
     }
   })
 
   .state('tab.servdetail-opcion', {
     url: '/servicios/:servId/:ServOpc',
+    cache: false,
     views: {
       'tab-servicios': {
         templateUrl: 'templates/service-bloqueo.html',
@@ -287,6 +315,7 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
 
   .state('tab.seguridad', {
     url: '/seguridad',
+    cache: false,
     views: {
       'tab-seguridad': {
         templateUrl: 'templates/tab-seguridad.html',
@@ -316,15 +345,6 @@ $rootScope.urlBakcEnd = 'https://app.serfinansa.com.co/SerfiAppService/api/';
         }
     }
   })
-
-  .state('clavedinamica', {
-    cache: false,
-    url: '/clavedinamica/:stateBack/:stateForward',
-    templateUrl: 'templates/clavedinamica.html',
-    controller: 'ClaveDinamicaCtrl'
-  })
-
-
 
   .state('tab.product-desembolso', {
     url: '/desembolso',
