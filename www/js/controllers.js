@@ -1047,17 +1047,20 @@ angular.module('starter.controllers', [])
     });
 
     $scope.continuar= function(beneficiario){
+      $loading.show();
       if (typeof beneficiario != 'undefined'){
         var giro;
           Giros.Consultar(beneficiario).then(function(respuesta){
             if (respuesta.correcto){
               giro =  respuesta.giro;
-              $state.go('tab.ConfirmarGiro');
-              $localstorage.setObject('giro',giro);
+              $state.go('tab.ConfirmarGiro', {giro:giro});
+              $loading.hide();
+            }else{
+              $alert.showAlert(respuesta.descripcion);
             }
           });
-
       }
+      $loading.hide();
     }
 
     $scope.back= function(){
@@ -1070,9 +1073,15 @@ angular.module('starter.controllers', [])
   })
 
   .controller('ConfirGiroController', function($scope, $state, $stateParams,$ionicHistory , $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
+    $scope.tarjeta=$localstorage.getObject('master_cta').Numero;
+
     $scope.$on('$ionicView.beforeEnter', function(e) {
-        $scope.giro=$localstorage.getObject('giro');
+        $scope.giro=$stateParams.giro;
     });
+
+    $scope.confirmar= function(){
+        var giro=$stateParams.giro;
+    }
   })
 
 

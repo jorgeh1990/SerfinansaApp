@@ -14,30 +14,33 @@
         Datos del giro
       </div>
       <div class="center-text">
+        <h4></h4>
           <h2>${{giro.total| number:0}}</h2>
           <h4>Total</h4>
       </div>
     <div>
       <div class="list">
 
-        <div class="row">
+        <div class="row row1">
             <h5 class="labelinfo column left column left" >Celular de beneficiario</h5><h5 class="infobox column right column right">{{giro.celular_beneficiario}}</h5>
         </div>
-
-        <div class="row">
+        <div class="row row1">
             <h5 class="labelinfo column left column left" >Valor</h5><h5 class="infobox column right column right">${{giro.valor| number:0}}</h5>
         </div>
-        <div class="row">
+        <div class="row row1">
             <h5 class="labelinfo column left column left" >Comisi&oacute;n</h5><h5 class="infobox column right column right">${{giro.comision| number:0}}</h5>
         </div>
-        <div class="row">
+        <div class="row row1">
             <h5 class="labelinfo column left column left" >IVA</h5><h5 class="infobox column right column right">${{giro.iva| number:0}}</h5>
+        </div>
+        <div class="row row1">
+            <h5 class="labelinfo column left column left" >Tarjeta</h5><h5 class="infobox column right column right">{{tarjeta| maskNumber}}</h5>
         </div>
      </div>
 
     </div>
       <div class="item item-divider">
-        <button class="button1" ng-click="continuar(beneficiario)">
+        <button class="button1" ng-click="confirmar()">
           Confirmar
         </button>
       </div>

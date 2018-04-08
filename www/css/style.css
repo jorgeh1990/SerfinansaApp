@@ -48,6 +48,10 @@ body {
 	margin-right: 10px;
 }
 
+.list .row1{
+	height: 50px !important;
+}
+
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;

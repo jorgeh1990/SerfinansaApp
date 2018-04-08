@@ -300,7 +300,8 @@ $rootScope.onTabSelected=function(){
         templateUrl: 'templates/confirmarGiro.html',
         controller: 'ConfirGiroController',
       }
-    }
+    },
+    params:{ giro:null }
   })
 
   .state('tab.servdetail-opcion', {
