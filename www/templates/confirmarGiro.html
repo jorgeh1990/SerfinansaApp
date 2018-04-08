@@ -1,10 +1,6 @@
 
 
 <ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />' >
-<ion-nav-buttons side="left">
-    <button class="button button-clear" ng-click="back()" >
-    <i class="icon ion-ios-arrow-back" style="color: white;"></i></button>
- </ion-nav-buttons>
 <div class="bar bar-subheader bar-assertive">
   <h2 class="title">Giramas</h2>
 </div>
@@ -17,25 +13,25 @@
       <div class="item item-divider">
         Datos del giro
       </div>
+      <div class="center-text">
+          <h2>${{giro.total| number:0}}</h2>
+          <h4>Total</h4>
+      </div>
     <div>
       <div class="list">
+
         <div class="row">
-            <span class="labelinfo column left column left" >Celular de beneficiario</span><span class="infobox column right column right">{{giro.celular_beneficiario}}</span>
+            <h5 class="labelinfo column left column left" >Celular de beneficiario</h5><h5 class="infobox column right column right">{{giro.celular_beneficiario}}</h5>
+        </div>
+
+        <div class="row">
+            <h5 class="labelinfo column left column left" >Valor</h5><h5 class="infobox column right column right">${{giro.valor| number:0}}</h5>
         </div>
         <div class="row">
-            <span class="labelinfo column left column left" >Total</span><span class="infobox column right column right">{{giro.total| number:0}}</span>
+            <h5 class="labelinfo column left column left" >Comisi&oacute;n</h5><h5 class="infobox column right column right">${{giro.comision| number:0}}</h5>
         </div>
         <div class="row">
-            <span class="labelinfo column left column left" >Valor</span><span class="infobox column right column right">{{giro.valor| number:0}}</span>
-        </div>
-        <div class="row">
-            <span class="labelinfo column left column left" >Comici&oacute;n</span><span class="infobox column right column right">{{giro.comision| number:0}}</span>
-        </div>
-        <div class="row">
-            <span class="labelinfo column left column left" >IVA</span><span class="infobox column right column right">{{giro.iva| number:0}}</span>
-        </div>
-        <div class="row">
-            <span class="labelinfo column left column left" >IVA</span><span class="infobox column right column right">{{giro.iva| number:0}}</span>
+            <h5 class="labelinfo column left column left" >IVA</h5><h5 class="infobox column right column right">${{giro.iva| number:0}}</h5>
         </div>
      </div>
 

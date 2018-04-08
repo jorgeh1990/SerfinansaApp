@@ -45,10 +45,11 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
   });
 
   $rootScope.validar=function(){
+    $rootScope.otpValido=true;
     $rootScope.modal.hide();
   }
 
-
+  $rootScope.otpValido=false;
   $rootScope.events = [];
 
   $rootScope.$on('IdleStart', function() {

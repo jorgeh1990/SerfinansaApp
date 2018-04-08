@@ -1039,18 +1039,15 @@ angular.module('starter.controllers', [])
 
   })
 
-  .controller('GiroController', function($scope,$ionicModal,$rootScope, $state, $ionicHistory, $stateParams, $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
+  .controller('GiroController', function($scope,$ionicModal, $rootScope, $state, $ionicHistory, $stateParams, $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
     $scope.$on('$ionicView.beforeEnter', function(e) {
+      if(!$rootScope.otpValido){
         $rootScope.modal.show();
+      }
     });
 
-
-
-
     $scope.continuar= function(beneficiario){
-          $rootScope.modal.show();
       if (typeof beneficiario != 'undefined'){
-
         var giro;
           Giros.Consultar(beneficiario).then(function(respuesta){
             if (respuesta.correcto){
