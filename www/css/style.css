@@ -4,6 +4,50 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+
+.fade.in {
+    opacity: 1;
+}
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity .15s linear;
+    -o-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+}
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
 .banner {
     max-width: 80%;
     height: auto;
@@ -42,10 +86,20 @@ body {
     font-size: 14px;
 		width: 100%;
 }
+.button1:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
 
 .contenedor{
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+.list .row1{
+	height: 50px !important;
 }
 
 .list .item.item-accordion {
@@ -343,6 +397,12 @@ a .extracto{
 
 .right {
   width: 40%;
+}
+
+.center{
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
 }
 
 /* Clear floats after the columns */

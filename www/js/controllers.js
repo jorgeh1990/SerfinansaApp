@@ -1039,29 +1039,29 @@ angular.module('starter.controllers', [])
 
   })
 
-  .controller('GiroController', function($scope,$ionicModal,$rootScope, $state, $ionicHistory, $stateParams, $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
+  .controller('GiroController', function($scope,$ionicModal, $rootScope, $state, $stateParams, $localstorage, $window, $loading, $alert, Giros) {
     $scope.$on('$ionicView.beforeEnter', function(e) {
       if(!$rootScope.otpValido){
         $rootScope.modal.show();
       }
     });
 
-
-
-
-    $scope.continuar= function(beneficiario){
-          $rootScope.modal.show();
-      if (typeof beneficiario != 'undefined'){
-
+    $scope.submitted=false;
+    $scope.continuar= function(beneficiario, isValid){
+      $scope.submitted=true;
+      if (typeof beneficiario != 'undefined' && isValid){
+        $loading.show();
         var giro;
           Giros.Consultar(beneficiario).then(function(respuesta){
             if (respuesta.correcto){
               giro =  respuesta.giro;
-              $state.go('tab.ConfirmarGiro');
-              $localstorage.setObject('giro',giro);
+              $state.go('tab.ConfirmarGiro', {giro:giro});
+              $loading.hide();
+            }else{
+              $alert.showAlert(respuesta.descripcion);
+              $loading.hide();
             }
           });
-
       }
     }
 
@@ -1075,9 +1075,15 @@ angular.module('starter.controllers', [])
   })
 
   .controller('ConfirGiroController', function($scope, $state, $stateParams,$ionicHistory , $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
+    $scope.tarjeta=$localstorage.getObject('master_cta').Numero;
+
     $scope.$on('$ionicView.beforeEnter', function(e) {
-        $scope.giro=$localstorage.getObject('giro');
+        $scope.giro=$stateParams.giro;
     });
+
+    $scope.confirmar= function(){
+        var giro=$stateParams.giro;
+    }
   })
 
 

@@ -872,7 +872,11 @@ angular.module('ionic.utils', [])
   return {
     show: function() {
       $ionicLoading.show({
-        template: '<ion-spinner icon="dots"></ion-spinner><br />'
+        template: '<ion-spinner icon="dots" style:"z-index:99"></ion-spinner><br />',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 500,
+        showDelay: 100
       });
     },
     hide: function() {

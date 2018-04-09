@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controllers', 'starter.services', 'starter.filters', 'ionic.utils', 'starter.directives'])
+angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controllers', 'starter.services', 'starter.filters', 'ionic.utils','ui.mask', 'starter.directives'])
 
 .run(function($ionicPlatform,$ionicModal, $ionicHistory,$window, $localstorage, $rootScope, $state, Idle, $ionicPopup,$ionicPush,$http) {
   $ionicPlatform.ready(function() {
@@ -45,6 +45,7 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
   });
 
   $rootScope.validar=function(){
+    $rootScope.otpValido=true;
     $rootScope.modal.hide();
     $rootScope.otpValido=true;
   }
@@ -306,7 +307,8 @@ $rootScope.onTabSelected=function(){
         templateUrl: 'templates/confirmarGiro.html',
         controller: 'ConfirGiroController',
       }
-    }
+    },
+    params:{ giro:null }
   })
 
   .state('tab.servdetail-opcion', {
