@@ -46,8 +46,15 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
 
   $rootScope.validar=function(){
     $rootScope.modal.hide();
+    $rootScope.otpValido=true;
   }
 
+  $rootScope.backServicios= function(){
+      $rootScope.modal.hide();
+      $state.go('tab.servicios');
+  }
+
+  $rootScope.otpValido=false;
 
   $rootScope.events = [];
 

@@ -1041,7 +1041,9 @@ angular.module('starter.controllers', [])
 
   .controller('GiroController', function($scope,$ionicModal,$rootScope, $state, $ionicHistory, $stateParams, $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
     $scope.$on('$ionicView.beforeEnter', function(e) {
+      if(!$rootScope.otpValido){
         $rootScope.modal.show();
+      }
     });
 
 
