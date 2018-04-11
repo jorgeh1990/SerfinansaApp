@@ -514,16 +514,18 @@ angular.module('starter.services', [])
 })
 
 .factory('Giros', function($http, $rootScope, $localstorage) {
-  var usuario = $localstorage.getObject('user');
+
 
   return {
     Consultar: function(data) {
+      var usuario = $localstorage.getObject('user');
       data.tipo_id_girador=usuario.tipodc;
       data.id_girador=usuario.id;
       data.nombre_girador=usuario.nombre;
       var reqData = {
         url: $rootScope.urlBakcEnd + 'Giros/Consultar',
         method: 'POST',
+        cache: false,
         data: data,
         headers: {
           'Authorization': 'Bearer '+ usuario.token,
@@ -531,7 +533,33 @@ angular.module('starter.services', [])
           'Content-Type': 'application/json'
         }
       };
+      var promise = $http(reqData).then(function(response) {
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = JSON.stringify(error);
+        }
+        return {
+          error: true,
+          mensaje: error.Message
+        };
+      });
+      return promise;
+    },
 
+    Confirmar: function(data) {
+      var usuario = $localstorage.getObject('user');
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Giros/Confirmar',
+        method: 'POST',
+        cache: false,
+        data: data,
+        headers: {
+          'Authorization': 'Bearer '+ usuario.token,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      };
       var promise = $http(reqData).then(function(response) {
         return response.data;
       }, function(error) {
@@ -545,8 +573,8 @@ angular.module('starter.services', [])
       });
       return promise;
     }
-  }
 
+  }
 })
 
 .factory('UsrAuth', function($http, $rootScope) {

@@ -1076,13 +1076,41 @@ angular.module('starter.controllers', [])
 
   .controller('ConfirGiroController', function($scope, $state, $stateParams,$ionicHistory , $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
     $scope.tarjeta=$localstorage.getObject('master_cta').Numero;
-
+    var giro = {}
     $scope.$on('$ionicView.beforeEnter', function(e) {
-        $scope.giro=$stateParams.giro;
+        giro=$stateParams.giro;
+        $scope.giro=giro;
     });
 
-    $scope.confirmar= function(){
-        var giro=$stateParams.giro;
+    $scope.confirmar= function(card){
+      var data={};
+      data.tarjeta=$scope.tarjeta;
+      data.cvc2=card.cvc;
+      data.fechadeVencimiento={};
+      data.fechadeVencimiento.ano=card.expiration.year;
+      data.fechadeVencimiento.mes=card.expiration.month;
+      data.numCuotas=card.cuotas;
+      data.canalNovedad='SerfinansaMovil';
+      data.giro=$stateParams.giro;
+      $loading.show();
+      var giro;
+        Giros.Confirmar(data).then(function(respuesta){
+          if (typeof respuesta != 'undefined'){
+            $loading.hide();
+            var alertPopup = $ionicPopup.alert({
+               title: 'Giramas',
+               template: respuesta.descripcion
+            });
+
+            alertPopup.then(function(res) {
+              $ionicHistory.nextViewOptions({
+                disableAnimate: false,
+                disableBack: true
+              });
+               $state.go('tab.servicios')
+            });
+          }
+        });
     }
   })
 

@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controllers', 'starter.services', 'starter.filters', 'ionic.utils','ui.mask', 'starter.directives'])
+angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controllers', 'starter.services', 'starter.filters', 'ionic.utils','ui.mask', 'starter.directives', 'credit-cards'])
 
 .run(function($ionicPlatform,$ionicModal, $ionicHistory,$window, $localstorage, $rootScope, $state, Idle, $ionicPopup,$ionicPush,$http) {
   $ionicPlatform.ready(function() {
@@ -32,6 +32,7 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
   $rootScope.logout = function() {
     console.log("loging out user");
     $rootScope.modal.hide();
+    $rootScope.otpValido=false;
     $state.go('auth.login');
     $localstorage.clear();
     Idle.unwatch();

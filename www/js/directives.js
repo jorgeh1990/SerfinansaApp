@@ -101,6 +101,8 @@ angular.module('starter.directives', [])
 })
 
 
+
+
 .directive('realTimeCurrency', function ($filter, $locale) {
     var decimalSep = $locale.NUMBER_FORMATS.DECIMAL_SEP;
     var toNumberRegex = new RegExp('[^0-9\\' + decimalSep + ']', 'g');
