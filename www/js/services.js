@@ -263,7 +263,7 @@ angular.module('starter.services', [])
       url: 'master-actpin'
     },{
       id: 3,
-      name: 'Colocar giro',
+      name: 'Enviar giro',
       url: 'ColcarGiro'
     }];
     //,{id: 2, name: 'Bloqueo Tarjeta Débito'}

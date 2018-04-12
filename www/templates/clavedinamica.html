@@ -1,15 +1,14 @@
 <ion-modal-view>
-    <ion-header-bar class="bar bar-header" align-title="center">
-      <div class = "bar bar-header bar-serfinansa">
-         <button class = "button button-clear icon ion-ios-arrow-back" style="color: white;" ng-click='backServicios()'></button>
-           <img src="img/logos-01.png" class="title-image-header" />
-      </div>
+    <ion-header-bar class="bar bar-header flex-header" align-title="center">
+       <button class = "button button-clear icon ion-ios-arrow-back" style="color: white;" ng-click='backServicios()'></button>
+       <div class="center"><img src="img/logos-01.png" class="title-image-header" /></div>
    </ion-header-bar>
+   <br/>
       <ion-content >
         <div class=" padding center">
             <label class="item-input-wrapper item-input input1 item-icon-left">
               <i class="icon ion-key"></i>
-              <input type="text" placeholder="Ingrese la Clave Din&aacute;mica" ng-model='txt_clavedinamica'></input>
+              <input type="text" placeholder="Ingresa la Clave Din&aacute;mica" ng-model='txt_clavedinamica'></input>
             </label>
 
               <button class="button1" ng-click="validar(txt_clavedin)">

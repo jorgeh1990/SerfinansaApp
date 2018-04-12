@@ -1077,13 +1077,17 @@ angular.module('starter.controllers', [])
   .controller('ConfirGiroController', function($scope, $state, $stateParams,$ionicHistory , $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
     $scope.tarjeta=$localstorage.getObject('master_cta').Numero;
     var giro = {}
+    $scope.submitted=false;
     $scope.$on('$ionicView.beforeEnter', function(e) {
         giro=$stateParams.giro;
         $scope.giro=giro;
     });
 
-    $scope.confirmar= function(card){
+    $scope.confirmar= function(card, isValid){
       var data={};
+      $scope.submitted=true;
+      if (typeof card != 'undefined' && isValid){
+
       data.tarjeta=$scope.tarjeta;
       data.cvc2=card.cvc;
       data.fechadeVencimiento={};
@@ -1111,6 +1115,9 @@ angular.module('starter.controllers', [])
             });
           }
         });
+      }else{
+        $alert.showAlert('Debe llenar los datos de la tarjeta');
+      }
     }
   })
 

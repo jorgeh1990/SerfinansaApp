@@ -19,40 +19,47 @@
       </div>
        <form name="paymentForm">
           <div>
-            <div class="row row1">
-                <h5 class="labelinfo column left" >Tarjeta</h5><h5 class="infobox column right">{{tarjeta| maskNumber}}</h5>
+            <div class="item row row1">
+                <h3 class="labelinfo column left" >Tarjeta</h3><h3 class="infobox column right">{{tarjeta| maskNumber}}</h3>
             </div>
-            <div class="row row1 input-label label1">
-              <label>CVC</label>
+            <div class="item item2">
+              <div class="row row1">
+                <label>CVC</label>
+              </div>
+              <div class="row row1">
+                <input type="text" id="cvc" name="ccCvc" ng-model="card.cvc" cc-type="paymentForm.ccNumber.$ccType" cc-cvc ng-required="true" placeholder="cvc"/>
+              </div>
             </div>
-            <div class="row row1">
-              <input type="text" ng-model="card.cvc" cc-cvc ng-required="true" placeholder="cvc"/>
-            </div>
-            <div class="form-group">
-              <div class="row row1 input-label label1" >
+            <div class="item item2">
+              <div class="row row1" >
                 <label for="card-number">Expiration</label>
               </div>
               <div class="row" cc-exp>
                 <div class="col-xs-3">
-                  <input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="card.expiration.month">
+                  <input placeholder="MM" type="text" name="ccExpMonth" class="form-control" cc-exp-month ng-model="card.expiration.month" ng-required="true">
                 </div>
                 <div class="col-xs-3">
-                  <input placeholder="YY" type="text" class="form-control" cc-exp-year maxlength="2" name="ccExpYear" ng-model="card.expiration.year">
+                  <input placeholder="YY" type="text" name="ccExpYear" class="form-control" cc-exp-year maxlength="2"  ng-model="card.expiration.year" ng-required="true">
                 </div>
               </div>
             </div>
-            <div class="row row1 input-label label1" >
-              <label>Cuotas</label>
+            <div class="item item2">
+              <div class="row row1 input-label label1" >
+                <label>Cuotas</label>
+              </div>
+              <div class="row row1" >
+                <select ng-model='card.cuotas' class="column right">
+                  <option ng-selected='{{n}}==1' ng-repeat='n in []| range:24' class="label1" value='{{n}}' selected>{{n}}</option>
+                </select>
+              </div>
             </div>
-            <div class="row row1" >
-              <select ng-model='card.cuotas' class="column right">
-                <option ng-selected='{{n}}==1' ng-repeat='n in []| range:24' class="label1" value='{{n}}' selected>{{n}}</option>
-              </select>
-            </div>
-
-
-        </div>
       </form>
+      <div class="alert alert-error" ng-show="submitted && !paymentForm.$valid">
+        <div ng-show="submitted && !paymentForm.$error.ccCvc">*CVC invalido</div>
+        <div ng-show="submitted && !paymentForm.ccExpMonth.$valid ">*Mes invalido</div>
+        <div ng-show="submitted && !paymentForm.ccExpYear.$valid">*A&ntilde;o invalido </div>
+        <div ng-show="submitted && paymentForm.$error.ccExp">*Fecha de Vencimiento invalida</div>
+      </div>
     </div>
     </div>
     <div class="card">
@@ -78,11 +85,13 @@
 
     </div>
       <div class="item item-divider">
-        <button class="button1" ng-click="confirmar(card)">
+        <button class="button1" ng-click="confirmar(card,paymentForm.$valid)">
           Confirmar
         </button>
       </div>
     </div>
+  </br>
+  </br>
   </div>
   </ion-content>
 </ion-view>
