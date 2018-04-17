@@ -8,7 +8,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controllers', 'starter.services', 'starter.filters', 'ionic.utils','ui.mask', 'starter.directives', 'credit-cards'])
 
-.run(function($ionicPlatform,$ionicModal, $ionicHistory,$window, $localstorage, $rootScope, $state, Idle, $ionicPopup,$ionicPush,$http, $loading, $alert, ClaveDinamica) {
+.run(function($ionicPlatform,$ionicModal, $ionicHistory,$window, $ionicViewService, $localstorage, $rootScope, $state, Idle, $ionicPopup,$ionicPush,$http, $loading, $alert, ClaveDinamica) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -64,8 +64,17 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
   }
 
   $rootScope.generarClaveDinamica=function(data){
+    $loading.show();
     ClaveDinamica.Generar().then(function(respuesta){
-      console.log(JSON.stringify(respuesta));
+      if(respuesta.codigo==='002'){
+        $loading.hide();
+        var alertPopup = $ionicPopup.alert({
+           title: 'Giramas',
+           template: respuesta.descripcion
+        });
+      }else if(respuesta.codigo==='000'){
+        $loading.hide();
+      }
     })
   }
 
