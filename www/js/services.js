@@ -577,6 +577,104 @@ angular.module('starter.services', [])
   }
 })
 
+.factory('ClaveDinamica', function($http, $rootScope, $localstorage) {
+  return{
+    Registrar: function(data) {
+      var usuario = $localstorage.getObject('user');
+      var registro={};
+      registro.id=usuario.id;
+      registro.tipoId=usuario.tipodc;
+      registro.celular=data.celular;
+      registro.usuario=usuario.usuario;
+      registro.email=data.email;
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'ClaveDinamica/Registrar',
+        method: 'POST',
+        cache: false,
+        data: registro,
+        headers: {
+          'Authorization': 'Bearer '+ usuario.token,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      };
+      var promise = $http(reqData).then(function(response) {
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = JSON.stringify(error);
+        }
+        return {
+          error: true,
+          mensaje: error.Message
+        };
+      });
+      return promise;
+    },
+    Generar: function(){
+      var usuario = $localstorage.getObject('user');
+      var generar={};
+      generar.id=usuario.id;
+      generar.tipoId=usuario.tipodc;
+      generar.canal=4;
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'ClaveDinamica/Generar',
+        method: 'POST',
+        cache: false,
+        data: generar,
+        headers: {
+          'Authorization': 'Bearer '+ usuario.token,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      };
+      var promise = $http(reqData).then(function(response) {
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = JSON.stringify(error);
+        }
+        return {
+          error: true,
+          mensaje: error.Message
+        };
+      });
+      return promise;
+    },
+    Validar: function(otp){
+      var usuario = $localstorage.getObject('user');
+      var generar={};
+      generar.id=usuario.id;
+      generar.tipoId=usuario.tipodc;
+      generar.canal=4;
+      generar.otp=otp;
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'ClaveDinamica/Validar',
+        method: 'POST',
+        cache: false,
+        data: generar,
+        headers: {
+          'Authorization': 'Bearer '+ usuario.token,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      };
+      var promise = $http(reqData).then(function(response) {
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = JSON.stringify(error);
+        }
+        return {
+          error: true,
+          mensaje: error.Message
+        };
+      });
+      return promise;
+    }
+  }
+})
+
 .factory('UsrAuth', function($http, $rootScope) {
   service = {};
   var UserDocument = {};

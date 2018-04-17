@@ -4,20 +4,27 @@
     <span class="header-info" >Ip: {{ip}}</span>
     <span class="header-info" >Último ingreso {{ingreso}}</span>
   </span>
-  <div class=" padding center">
-      <label class="item-input-wrapper item-input input1 item-icon-left">
-        <i class="icon ion-iphone"></i>
-        <input type="text" placeholder="N&uacute;mero celular" ng-model='registro.celular'></input>
-      </label>
-
-      <label class="item-input-wrapper item-input input1 item-icon-left">
-        <i class="icon ion-ios-email"></i>
-        <input type="email" placeholder="Correo electronico" ng-model='registro.email'></input>
-      </label>
-
-        <button class="button1" ng-click="registrar(registro)">
-        	Registar
+  <form name="registroForm">
+    <div class=" padding center">
+        <label class="item-input-wrapper item-input input1 item-icon-left">
+          <i class="icon ion-iphone"></i>
+          <input type="text" name="celular" placeholder="N&uacute;mero celular" ng-model='registro.celular' ng-required="true" type="text" ui-mask="(999) 999-9999" inputmode="numeric" ui-mask-placeholder ui-mask-placeholder-char="_" ></input>
+        </label>
+        <label class="item-input-wrapper item-input input1 item-icon-left">
+          <i class="icon ion-ios-email"></i>
+          <input type="email" name="email" placeholder="E-mail" ng-model='registro.email' ng-required="true" ></input>
+        </label>
+        <button class="button1" ng-click="registrar(registro,registroForm.$valid)">
+          	Registar
         </button>
-  </div>
+        <br/>
+        <div class="alert alert-error" ng-show="submitted && !registroForm.$valid">
+          <div ng-show="submitted && registroForm.celular.$error.required">*Por favor ingresa tu n&uacute;mero de celular</div>
+          <div ng-show="submitted && registroForm.email.$error.required">*Por favor ingresa tu correo electronico</div>
+          <div ng-show="submitted && registroForm.$error.email">*Correo incorrecto</div>
+        </div>
+    </div>
+  </form>
+
   </ion-content>
 </ion-view>

@@ -8,7 +8,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controllers', 'starter.services', 'starter.filters', 'ionic.utils','ui.mask', 'starter.directives', 'credit-cards'])
 
-.run(function($ionicPlatform,$ionicModal, $ionicHistory,$window, $localstorage, $rootScope, $state, Idle, $ionicPopup,$ionicPush,$http) {
+.run(function($ionicPlatform,$ionicModal, $ionicHistory,$window, $localstorage, $rootScope, $state, Idle, $ionicPopup,$ionicPush,$http, $loading, $alert, ClaveDinamica) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -45,10 +45,28 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
    $rootScope.modal = modal;
   });
 
-  $rootScope.validar=function(){
-    $rootScope.otpValido=true;
-    $rootScope.modal.hide();
-    $rootScope.otpValido=true;
+  $rootScope.validar=function(otp,isValid){
+    $rootScope.submitted=true;
+    if (typeof otp != 'undefined' && isValid){
+      $loading.show();
+      var giro;
+        ClaveDinamica.Validar(otp).then(function(respuesta){
+          if (respuesta.codigo==='000'){
+            $rootScope.modal.hide();
+            $rootScope.otpValido=true;
+            $loading.hide();
+          }else{
+            $alert.showAlert(respuesta.descripcion);
+            $loading.hide();
+          }
+        });
+    }
+  }
+
+  $rootScope.generarClaveDinamica=function(data){
+    ClaveDinamica.Generar().then(function(respuesta){
+      console.log(JSON.stringify(respuesta));
+    })
   }
 
   $rootScope.backServicios= function(){

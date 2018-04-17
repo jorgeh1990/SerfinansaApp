@@ -1042,6 +1042,7 @@ angular.module('starter.controllers', [])
   .controller('GiroController', function($scope,$ionicModal, $rootScope, $state, $stateParams, $localstorage, $window, $loading, $alert, Giros) {
     $scope.$on('$ionicView.beforeEnter', function(e) {
       if(!$rootScope.otpValido){
+        $rootScope.generarClaveDinamica();
         $rootScope.modal.show();
       }
     });
@@ -1087,34 +1088,34 @@ angular.module('starter.controllers', [])
       var data={};
       $scope.submitted=true;
       if (typeof card != 'undefined' && isValid){
-
-      data.tarjeta=$scope.tarjeta;
-      data.cvc2=card.cvc;
-      data.fechadeVencimiento={};
-      data.fechadeVencimiento.ano=card.expiration.year;
-      data.fechadeVencimiento.mes=card.expiration.month;
-      data.numCuotas=card.cuotas;
-      data.canalNovedad='SerfinansaMovil';
-      data.giro=$stateParams.giro;
-      $loading.show();
-      var giro;
-        Giros.Confirmar(data).then(function(respuesta){
-          if (typeof respuesta != 'undefined'){
-            $loading.hide();
-            var alertPopup = $ionicPopup.alert({
-               title: 'Giramas',
-               template: respuesta.descripcion
-            });
-
-            alertPopup.then(function(res) {
-              $ionicHistory.nextViewOptions({
-                disableAnimate: false,
-                disableBack: true
+        data.tarjeta=$scope.tarjeta;
+        data.cvc2=card.cvc;
+        data.fechadeVencimiento={};
+        data.fechadeVencimiento.ano=card.expiration.year;
+        data.fechadeVencimiento.mes=card.expiration.month;
+        data.numCuotas=card.cuotas;
+        data.canalNovedad='SerfinansaMovil';
+        data.giro=$stateParams.giro;
+        $loading.show();
+        var giro;
+          Giros.Confirmar(data).then(function(respuesta){
+            if (typeof respuesta != 'undefined'){
+              $loading.hide();
+              var alertPopup = $ionicPopup.alert({
+                 title: 'Giramas',
+                 template: respuesta.descripcion
               });
-               $state.go('tab.servicios')
-            });
-          }
-        });
+
+              alertPopup.then(function(res) {
+                $rootScope.otpValido=false;
+                $ionicHistory.nextViewOptions({
+                  disableAnimate: false,
+                  disableBack: true
+                });
+                 $state.go('tab.servicios')
+              });
+            }
+          });
       }else{
         $alert.showAlert('Debe llenar los datos de la tarjeta');
       }
@@ -1148,13 +1149,30 @@ angular.module('starter.controllers', [])
 
 
   })
-  .controller('RegistroClaveDinamicaCtrl', function($scope, $state, $stateParams, $localstorage, $window, $loading, $alert,$ionicPopup) {
+  .controller('RegistroClaveDinamicaCtrl', function($scope, $state, $stateParams, $localstorage, $window, $loading, $alert,$ionicPopup,ClaveDinamica) {
     $scope.$on('$ionicView.beforeEnter', function(e) {
       $scope.name = $localstorage.getObject('user').nombre;
       $scope.ip = $localstorage.getObject('user').ip;
       $scope.ingreso = $localstorage.getObject('user').ingreso;
 
     });
+
+    $scope.registrar=function(registro,isValid){
+
+      $scope.submitted=true;
+      if (typeof registro != 'undefined' && isValid){
+        $loading.show();
+        ClaveDinamica.Registrar(registro).then(function(respuesta){
+          if (typeof respuesta != 'undefined'){
+            var alertPopup = $ionicPopup.alert({
+               title: 'Serfinansa',
+               template: respuesta.descripcion
+            });
+            $loading.hide();
+          }
+        })
+      }
+    }
 
     $scope.back = function(){
       $state.go($stateParams.state);
