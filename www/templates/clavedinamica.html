@@ -5,11 +5,14 @@
    </ion-header-bar>
    <br/>
       <ion-content >
+        <ion-item class="item-text-wrap">
+          <p>La clave ser&aacute; envidada al celular a trav&eacute;s de mensaje de texto o al correo electr&oacute;nico que tienes registrado.</p>
+        </ion-item>
         <form name="otpForm">
           <div class="padding center">
               <label class="item-input-wrapper item-input input1 item-icon-left">
                 <i class="icon ion-key"></i>
-                <input type="number" pattern="[0-9]*" inputmode="numeric" ng-model='otp'  name="otp" ng-required="true" ng-maxlength="6" ng-minlength="6" placeholder="Ingresa la Clave Din&aacute;mica" ></input>
+                <input type="number" pattern="[0-9]*" inputmode="numeric" ng-model='otp' value=""  name="otp" ng-required="true" ng-maxlength="6" ng-minlength="6" placeholder="Ingresa la Clave Din&aacute;mica" ></input>
               </label>
 
                 <button class="button1" ng-click="validar(otp, otpForm.$valid )">

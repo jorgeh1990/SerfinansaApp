@@ -1043,7 +1043,9 @@ angular.module('starter.controllers', [])
     $scope.$on('$ionicView.beforeEnter', function(e) {
       if(!$rootScope.otpValido){
         $rootScope.generarClaveDinamica();
-        $rootScope.modal.show();
+        $rootScope.otp='';
+        $rootScope.submitted=false;
+        $rootScope.modalClaveDinamica();
       }
     });
 
@@ -1075,7 +1077,7 @@ angular.module('starter.controllers', [])
     }
   })
 
-  .controller('ConfirGiroController', function($scope, $state, $stateParams,$ionicHistory , $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
+  .controller('ConfirGiroController', function($scope,$rootScope, $state, $stateParams,$ionicHistory , $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
     $scope.tarjeta=$localstorage.getObject('master_cta').Numero;
     var giro = {}
     $scope.submitted=false;
@@ -1128,7 +1130,6 @@ angular.module('starter.controllers', [])
       $scope.name = $localstorage.getObject('user').nombre;
       $scope.ip = $localstorage.getObject('user').ip;
       $scope.ingreso = $localstorage.getObject('user').ingreso;
-
     });
 
     $scope.back = function(){

@@ -38,12 +38,24 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
     Idle.unwatch();
   };
 
+$rootScope.modalClaveDinamica = function() {
   $ionicModal.fromTemplateUrl('templates/clavedinamica.html', {
     scope: $rootScope,
     animation: 'slide-in-up'
   }).then(function(modal) {
    $rootScope.modal = modal;
+   $rootScope.openModal = function() {
+      $rootScope.modal.show();
+      };
+      $rootScope.closeModal = function() {
+        $rootScope.modal.hide();
+      };
+      $rootScope.$on('$destroy', function() {
+        //$scope.modal.remove();
+      });
+      $rootScope.openModal();
   });
+};
 
   $rootScope.validar=function(otp,isValid){
     $rootScope.submitted=true;
