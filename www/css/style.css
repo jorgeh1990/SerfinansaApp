@@ -483,6 +483,10 @@ a .extracto{
 	font-weight:bold;
 }
 
+.subheaderwhite{
+	background-color: white !important;
+}
+
 
 .btn-login {
 	background-color: #064378 !important;
