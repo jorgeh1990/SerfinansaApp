@@ -1,11 +1,10 @@
 
 
 <ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />' >
-<div class="bar bar-subheader bar-assertive">
-  <h2 class="title">Giramas</h2>
-</div>
-  <ion-content class="has-header has-subheader">
-
+  <ion-content class="has-header">
+    <div class="flex-header center" style="background-color: white">
+      <div class="center"><img src="img/logo_gira_mas2.png" class="title-image-header" /></div>
+    </div>
   <div class="padding center">
 
     <div class="center-text">
@@ -15,7 +14,7 @@
     </div>
     <div class="card">
       <div class="item item-divider">
-        Datos de la tarjeta
+        Datos de Tarjeta Ol&iacute;mpica
       </div>
        <form name="paymentForm">
           <div>
@@ -25,6 +24,7 @@
             <div class="item item2">
               <div class="row row1">
                 <label>CVC</label>
+                <i style="padding-left: 5px"class="icon ion-ios-help"></i>
               </div>
               <div class="row row1">
                 <input type="text" id="cvc" name="ccCvc" ng-model="card.cvc" cc-type="paymentForm.ccNumber.$ccType" cc-cvc ng-required="true" placeholder="cvc"/>
@@ -32,7 +32,7 @@
             </div>
             <div class="item item2">
               <div class="row row1" >
-                <label for="card-number">Expiration</label>
+                <label for="card-number">Fecha de vencimiento</label>
               </div>
               <div class="row" cc-exp>
                 <div class="col-xs-3">

@@ -1104,7 +1104,7 @@ angular.module('starter.controllers', [])
             if (typeof respuesta != 'undefined'){
               $loading.hide();
               var alertPopup = $ionicPopup.alert({
-                 title: 'Giramas',
+                 title: 'Gira Más',
                  template: respuesta.descripcion
               });
 

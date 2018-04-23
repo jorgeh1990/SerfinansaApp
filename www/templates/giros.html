@@ -4,11 +4,11 @@
 
 
   <ion-content class="has-header">
-    <div class="flex-header">
+    <div class="flex-header center" style="background-color: white">
       <div class="center"><img src="img/logo_gira_mas2.png" class="title-image-header" /></div>
     </div>
     <ion-item class="item-text-wrap">
-         <h3>El valor total del giro se debitara a su tarjeta de credito.</h3>
+         <p>El valor total del giro se debitar&aacute; de tu Tarjeta Ol&iacute;mpica.</p>
     </ion-item>
   <div class="padding">
     <div class="card">
@@ -41,7 +41,7 @@
          </label>
          <label class="item item-input item-floating-label">
            <p class="input-label">Valor</p>
-           <input class="input1" type="text" ng-required="true" name="valor" placeholder="Valor" pattern="[0-9]*" inputmode="numeric" min="20000" max="700000"  ng-model='beneficiario.valor' real-time-currency>
+           <input class="input1" type="text" ng-required="true" name="valor" placeholder="Valor del giro" pattern="[0-9]*" inputmode="numeric" min="20000" max="700000"  ng-model='beneficiario.valor' real-time-currency>
          </label>
        </div>
         <div class="item item-divider">
