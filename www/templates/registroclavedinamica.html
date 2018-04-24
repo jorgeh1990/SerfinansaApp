@@ -1,11 +1,11 @@
-<ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />' >
-  <ion-content >
-  <span class="nombre" >{{name}}<br />
+<ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />'>
+  <ion-content>
+    <span class="nombre">{{name}}<br />
     <span class="header-info" >Ip: {{ip}}</span>
-    <span class="header-info" >Último ingreso {{ingreso}}</span>
-  </span>
-  <form name="registroForm">
-    <div class=" padding center">
+    <span class="header-info">Último ingreso {{ingreso}}</span>
+    </span>
+    <form name="registroForm">
+      <div class=" padding center">
         <label class="item-input-wrapper item-input input1 item-icon-left">
           <i class="icon ion-iphone"></i>
           <input type="text" name="celular" placeholder="N&uacute;mero celular" ng-model='registro.celular' ng-required="true" type="text" ui-mask="(999) 999-9999" inputmode="numeric" ui-mask-placeholder ui-mask-placeholder-char="_" ></input>
@@ -23,8 +23,8 @@
           <div ng-show="submitted && registroForm.email.$error.required">*Por favor ingresa tu correo electronico</div>
           <div ng-show="submitted && registroForm.$error.email">*Correo incorrecto</div>
         </div>
-    </div>
-  </form>
+      </div>
+    </form>
 
   </ion-content>
 </ion-view>

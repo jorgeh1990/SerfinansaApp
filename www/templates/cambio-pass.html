@@ -9,18 +9,15 @@
   <ion-content class="">
   <span class="nombre" >{{name}}<br />
     <span class="header-info" >Último ingreso {{ingreso}} Ip: {{ip}}</span></span>
-    <div class="list">
-        <label class="item item-input">
-        	<input type="text" placeholder="Usuario" ng-model="usuario">
-        </label>
-        <label class="item item-input">
+    <div class="padding center">
+        <label class="item-input-wrapper item-input input1">
         	<input type="password" pattern="[0-9]*" inputmode="numeric" placeholder="Contraseña Actual" ng-model="pass" maxlength="4">
         </label>
-        <label class="item item-input">
+        <label class="item-input-wrapper item-input input1">
         	<input type="password" pattern="[0-9]*" inputmode="numeric" placeholder="Nueva Contraseña" ng-model="confirmPass" maxlength="4">
         </label>
 
-        <button class="button button-block button-positive" ng-click="changePass(usuario, pass, confirmPass)">
+        <button class="button1" ng-click="changePass(pass, confirmPass)">
         	Cambiar Contraseña
         </button>
     </div>

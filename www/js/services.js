@@ -1,83 +1,83 @@
 angular.module('starter.services', [])
 
 
-.factory('Oficinas', function($http, $rootScope) {
-  var oficinas = [];
-  return {
-    all: function() {
-      return oficinas;
-    },
-    LoadOficinas: function() {
-      var reqData = {
-        url: $rootScope.urlBakcEnd + 'Oficinas/GetOficinas',
-        method: 'GET',
-        data: '',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        }
-      };
-      var promise = $http(reqData).then(function(response) {
-        // The then function here is an opportunity to modify the response
-        console.log(response);
-        //products = response.data;
-        // The return value gets picked up by the then in the controller.
-        oficinas = response.data;
+  .factory('Oficinas', function($http, $rootScope) {
+    var oficinas = [];
+    return {
+      all: function() {
         return oficinas;
-      }, function(error) {
-        if (!error.Message) {
-          error.Message = "Ocurrio un error en el servidor";
-        }
-        return {
-          error: true,
-          mensaje: error.Message
+      },
+      LoadOficinas: function() {
+        var reqData = {
+          url: $rootScope.urlBakcEnd + 'Oficinas/GetOficinas',
+          method: 'GET',
+          data: '',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+          }
         };
-      });
-      return promise;
+        var promise = $http(reqData).then(function(response) {
+          // The then function here is an opportunity to modify the response
+          console.log(response);
+          //products = response.data;
+          // The return value gets picked up by the then in the controller.
+          oficinas = response.data;
+          return oficinas;
+        }, function(error) {
+          if (!error.Message) {
+            error.Message = "Ocurrio un error en el servidor";
+          }
+          return {
+            error: true,
+            mensaje: error.Message
+          };
+        });
+        return promise;
+      }
     }
-  }
 
-})
+  })
 
-.factory('Contactos', function($http, $rootScope) {
-  var contactos = [];
-  return {
-    all: function() {
-      return contactos;
-    },
-    LoadContactos: function() {
-      var reqData = {
-        url: $rootScope.urlBakcEnd + 'Oficina/getContactos',
-        method: 'GET',
-        data: '',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        }
-      };
-      var promise = $http(reqData).then(function(response) {
-        // The then function here is an opportunity to modify the response
-        console.log(response);
-        //products = response.data;
-        // The return value gets picked up by the then in the controller.
-        contactos = response.data;
+  .factory('Contactos', function($http, $rootScope) {
+    var contactos = [];
+    return {
+      all: function() {
         return contactos;
-      }, function(error) {
-        if (!error.Message) {
-          error.Message = "Ocurrio un error en el servidor";
-        }
-        return {
-          error: true,
-          mensaje: error.Message
+      },
+      LoadContactos: function() {
+        var reqData = {
+          url: $rootScope.urlBakcEnd + 'Oficina/getContactos',
+          method: 'GET',
+          data: '',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+          }
         };
-      });
-      return promise;
+        var promise = $http(reqData).then(function(response) {
+          // The then function here is an opportunity to modify the response
+          console.log(response);
+          //products = response.data;
+          // The return value gets picked up by the then in the controller.
+          contactos = response.data;
+          return contactos;
+        }, function(error) {
+          if (!error.Message) {
+            error.Message = "Ocurrio un error en el servidor";
+          }
+          return {
+            error: true,
+            mensaje: error.Message
+          };
+        });
+        return promise;
+      }
     }
-  }
 
-})
+  })
 
-.factory('Products', function($http, $localstorage, $rootScope) {
+  .factory('Products', function($http, $localstorage, $rootScope) {
     // Might use a resource here that returns a JSON array
 
     // Some fake testing data
@@ -219,7 +219,7 @@ angular.module('starter.services', [])
         var reqData = {
           url: $rootScope.urlBakcEnd + 'Extracto/EnviarExtMail',
           method: 'POST',
-          data: 'id=' + id + '&docID=' + docID + '&fecha=' + fecha +'&tipo='+ tipo +'&email='+ email +'&folder='+folder ,
+          data: 'id=' + id + '&docID=' + docID + '&fecha=' + fecha + '&tipo=' + tipo + '&email=' + email + '&folder=' + folder,
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -257,11 +257,11 @@ angular.module('starter.services', [])
       id: 1,
       name: 'Activación de tarjeta',
       url: 'activacion'
-    },{
+    }, {
       id: 2,
       name: 'Activación clave de avance tarjeta MasterCard',
       url: 'master-actpin'
-    },{
+    }, {
       id: 3,
       name: 'Enviar giro',
       url: 'ColcarGiro'
@@ -409,634 +409,634 @@ angular.module('starter.services', [])
     }
   })
 
-.factory('Desembolso', function($http, $localstorage, $rootScope) {
-  service = {};
-  var creditoData = {};
-  service.checkCredRot = function(user) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Transacciones/ValidaCredRota',
-      method: 'POST',
-      data: 'tipoId=' + user.tipodc + '&id=' + user.id,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
-    };
-
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
-      console.log(response);
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      var credito = {
-        errorInfo: false
+  .factory('Desembolso', function($http, $localstorage, $rootScope) {
+    service = {};
+    var creditoData = {};
+    service.checkCredRot = function(user) {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Transacciones/ValidaCredRota',
+        method: 'POST',
+        data: 'tipoId=' + user.tipodc + '&id=' + user.id,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
       };
-      if (response.data) {
-        if (response.data.codigo) { // no tiene credito rotativo disponible
-          credito.tieneCred = false;
 
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
+        console.log(response);
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        var credito = {
+          errorInfo: false
+        };
+        if (response.data) {
+          if (response.data.codigo) { // no tiene credito rotativo disponible
+            credito.tieneCred = false;
+
+          } else {
+            credito.tieneCred = true;
+
+          }
+          credito.responseData = response.data;
         } else {
-          credito.tieneCred = true;
-
+          credito.errorInfo = true;
+          credito.mensaje = "Error consultando información";
         }
-        credito.responseData = response.data;
-      } else {
-        credito.errorInfo = true;
-        credito.mensaje = "Error consultando información";
-      }
-      creditoData = credito;
-      test = creditoData;
-      return credito;
-    }, function() {});
-    return promise;
+        creditoData = credito;
+        test = creditoData;
+        return credito;
+      }, function() {});
+      return promise;
 
-  };
-
-  service.consultaDesembolso = function(user, num_tarjeta) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Transacciones/ConsultaDesembolso',
-      method: 'POST',
-      data: 'tipoId=' + user.tipodc + '&id=' + user.id + '&numtarjeta=' + num_tarjeta,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
     };
-    var promise = $http(reqData).then(function(response) {
-      var consultaCred = {
-        errorInfo: false
-      };
-      if (response.data) {
-        consultaCred.responseData = response.data;
-      } else {
-        consultaCred.errorInfo = true;
-        consultaCred.mensaje = "No se pudo recuperar información del crédito rotativo";
-      }
-      return consultaCred;
-    });
-    return promise;
-  };
 
-  service.desembolsaCredito = function(user, num_tarjeta, monto) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Transacciones/DesemCredRota',
-      method: 'POST',
-      data: 'tipoId=' + user.tipodc + '&id=' + user.id + '&numtarjeta=' + num_tarjeta + '&monto=' + monto,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
-    };
-    var promise = $http(reqData).then(function(response) {
-      var desemCred = {
-        errorInfo: false
-      };
-      if (response.data) {
-        desemCred.responseData = response.data;
-      } else {
-        desemCred.errorInfo = true;
-        desemCred.mensaje = "No se pudo recuperar información del crédito rotativo";
-      }
-      return desemCred;
-    });
-    return promise;
-  };
-
-  service.getCreditoData = function() {
-    if (creditoData) {
-      return creditoData;
-    } else {
-      return false;
-    }
-  }
-
-  return service;
-})
-
-.factory('Giros', function($http, $rootScope, $localstorage) {
-
-
-  return {
-    Consultar: function(data) {
-      var usuario = $localstorage.getObject('user');
-      data.tipo_id_girador=usuario.tipodc;
-      data.id_girador=usuario.id;
-      data.nombre_girador=usuario.nombre;
+    service.consultaDesembolso = function(user, num_tarjeta) {
       var reqData = {
-        url: $rootScope.urlBakcEnd + 'Giros/Consultar',
+        url: $rootScope.urlBakcEnd + 'Transacciones/ConsultaDesembolso',
         method: 'POST',
-        cache: false,
-        data: data,
+        data: 'tipoId=' + user.tipodc + '&id=' + user.id + '&numtarjeta=' + num_tarjeta,
         headers: {
-          'Authorization': 'Bearer '+ usuario.token,
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
         }
       };
       var promise = $http(reqData).then(function(response) {
-        return response.data;
-      }, function(error) {
-        if (!error.Message) {
-          error.Message = JSON.stringify(error);
-        }
-        return {
-          error: true,
-          mensaje: error.Message
+        var consultaCred = {
+          errorInfo: false
         };
+        if (response.data) {
+          consultaCred.responseData = response.data;
+        } else {
+          consultaCred.errorInfo = true;
+          consultaCred.mensaje = "No se pudo recuperar información del crédito rotativo";
+        }
+        return consultaCred;
       });
       return promise;
-    },
+    };
 
-    Confirmar: function(data) {
-      var usuario = $localstorage.getObject('user');
+    service.desembolsaCredito = function(user, num_tarjeta, monto) {
       var reqData = {
-        url: $rootScope.urlBakcEnd + 'Giros/Confirmar',
+        url: $rootScope.urlBakcEnd + 'Transacciones/DesemCredRota',
         method: 'POST',
-        cache: false,
-        data: data,
+        data: 'tipoId=' + user.tipodc + '&id=' + user.id + '&numtarjeta=' + num_tarjeta + '&monto=' + monto,
         headers: {
-          'Authorization': 'Bearer '+ usuario.token,
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
         }
       };
       var promise = $http(reqData).then(function(response) {
-        return response.data;
-      }, function(error) {
-        if (!error.Message) {
-          error.Message = JSON.stringify(error);
-        }
-        return {
-          error: true,
-          mensaje: error.Message
+        var desemCred = {
+          errorInfo: false
         };
+        if (response.data) {
+          desemCred.responseData = response.data;
+        } else {
+          desemCred.errorInfo = true;
+          desemCred.mensaje = "No se pudo recuperar información del crédito rotativo";
+        }
+        return desemCred;
       });
       return promise;
+    };
+
+    service.getCreditoData = function() {
+      if (creditoData) {
+        return creditoData;
+      } else {
+        return false;
+      }
     }
 
-  }
-})
+    return service;
+  })
 
-.factory('ClaveDinamica', function($http, $rootScope, $localstorage) {
-  return{
-    Registrar: function(data) {
-      var usuario = $localstorage.getObject('user');
-      var registro={};
-      registro.id=usuario.id;
-      registro.tipoId=usuario.tipodc;
-      registro.celular=data.celular;
-      registro.usuario=usuario.usuario;
-      registro.email=data.email;
-      var reqData = {
-        url: $rootScope.urlBakcEnd + 'ClaveDinamica/Registrar',
-        method: 'POST',
-        cache: false,
-        data: registro,
-        headers: {
-          'Authorization': 'Bearer '+ usuario.token,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      };
-      var promise = $http(reqData).then(function(response) {
-        return response.data;
-      }, function(error) {
-        if (!error.Message) {
-          error.Message = JSON.stringify(error);
-        }
-        return {
-          error: true,
-          mensaje: error.Message
+  .factory('Giros', function($http, $rootScope, $localstorage) {
+
+
+    return {
+      Consultar: function(data) {
+        var usuario = $localstorage.getObject('user');
+        data.tipo_id_girador = usuario.tipodc;
+        data.id_girador = usuario.id;
+        data.nombre_girador = usuario.nombre;
+        var reqData = {
+          url: $rootScope.urlBakcEnd + 'Giros/Consultar',
+          method: 'POST',
+          cache: false,
+          data: data,
+          headers: {
+            'Authorization': 'Bearer ' + usuario.token,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
         };
-      });
-      return promise;
-    },
-    Generar: function(){
-      var usuario = $localstorage.getObject('user');
-      var generar={};
-      generar.id=usuario.id;
-      generar.tipoId=usuario.tipodc;
-      generar.canal=4;
-      var reqData = {
-        url: $rootScope.urlBakcEnd + 'ClaveDinamica/Generar',
-        method: 'POST',
-        cache: false,
-        data: generar,
-        headers: {
-          'Authorization': 'Bearer '+ usuario.token,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      };
-      var promise = $http(reqData).then(function(response) {
-        return response.data;
-      }, function(error) {
-        if (!error.Message) {
-          error.Message = JSON.stringify(error);
-        }
-        return {
-          error: true,
-          mensaje: error.Message
+        var promise = $http(reqData).then(function(response) {
+          return response.data;
+        }, function(error) {
+          if (!error.Message) {
+            error.Message = JSON.stringify(error);
+          }
+          return {
+            error: true,
+            mensaje: error.Message
+          };
+        });
+        return promise;
+      },
+
+      Confirmar: function(data) {
+        var usuario = $localstorage.getObject('user');
+        var reqData = {
+          url: $rootScope.urlBakcEnd + 'Giros/Confirmar',
+          method: 'POST',
+          cache: false,
+          data: data,
+          headers: {
+            'Authorization': 'Bearer ' + usuario.token,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
         };
-      });
-      return promise;
-    },
-    Validar: function(otp){
-      var usuario = $localstorage.getObject('user');
-      var generar={};
-      generar.id=usuario.id;
-      generar.tipoId=usuario.tipodc;
-      generar.canal=4;
-      generar.otp=otp;
-      var reqData = {
-        url: $rootScope.urlBakcEnd + 'ClaveDinamica/Validar',
-        method: 'POST',
-        cache: false,
-        data: generar,
-        headers: {
-          'Authorization': 'Bearer '+ usuario.token,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      };
-      var promise = $http(reqData).then(function(response) {
-        return response.data;
-      }, function(error) {
-        if (!error.Message) {
-          error.Message = JSON.stringify(error);
-        }
-        return {
-          error: true,
-          mensaje: error.Message
-        };
-      });
-      return promise;
+        var promise = $http(reqData).then(function(response) {
+          return response.data;
+        }, function(error) {
+          if (!error.Message) {
+            error.Message = JSON.stringify(error);
+          }
+          return {
+            error: true,
+            mensaje: error.Message
+          };
+        });
+        return promise;
+      }
+
     }
-  }
-})
+  })
 
-.factory('UsrAuth', function($http, $rootScope) {
-  service = {};
-  var UserDocument = {};
-
-  service.login = function(user, pass) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Seguridad/validatePass',
-      method: 'POST',
-      data: 'usuario=' + user + '&clave=' + pass,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+  .factory('ClaveDinamica', function($http, $rootScope, $localstorage) {
+    return {
+      Registrar: function(data) {
+        var usuario = $localstorage.getObject('user');
+        var registro = {};
+        registro.id = usuario.id;
+        registro.tipoId = usuario.tipodc;
+        registro.celular = data.celular;
+        registro.usuario = usuario.usuario;
+        registro.email = data.email;
+        var reqData = {
+          url: $rootScope.urlBakcEnd + 'ClaveDinamica/Registrar',
+          method: 'POST',
+          cache: false,
+          data: registro,
+          headers: {
+            'Authorization': 'Bearer ' + usuario.token,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        };
+        var promise = $http(reqData).then(function(response) {
+          return response.data;
+        }, function(error) {
+          if (!error.Message) {
+            error.Message = JSON.stringify(error);
+          }
+          return {
+            error: true,
+            mensaje: error.Message
+          };
+        });
+        return promise;
+      },
+      Generar: function() {
+        var usuario = $localstorage.getObject('user');
+        var generar = {};
+        generar.id = usuario.id;
+        generar.tipoId = usuario.tipodc;
+        generar.canal = 4;
+        var reqData = {
+          url: $rootScope.urlBakcEnd + 'ClaveDinamica/Generar',
+          method: 'POST',
+          cache: false,
+          data: generar,
+          headers: {
+            'Authorization': 'Bearer ' + usuario.token,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        };
+        var promise = $http(reqData).then(function(response) {
+          return response.data;
+        }, function(error) {
+          if (!error.Message) {
+            error.Message = JSON.stringify(error);
+          }
+          return {
+            error: true,
+            mensaje: error.Message
+          };
+        });
+        return promise;
+      },
+      Validar: function(otp) {
+        var usuario = $localstorage.getObject('user');
+        var generar = {};
+        generar.id = usuario.id;
+        generar.tipoId = usuario.tipodc;
+        generar.canal = 4;
+        generar.otp = otp;
+        var reqData = {
+          url: $rootScope.urlBakcEnd + 'ClaveDinamica/Validar',
+          method: 'POST',
+          cache: false,
+          data: generar,
+          headers: {
+            'Authorization': 'Bearer ' + usuario.token,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        };
+        var promise = $http(reqData).then(function(response) {
+          return response.data;
+        }, function(error) {
+          if (!error.Message) {
+            error.Message = JSON.stringify(error);
+          }
+          return {
+            error: true,
+            mensaje: error.Message
+          };
+        });
+        return promise;
       }
-    };
-    console.log($rootScope.urlBakcEnd);
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
-      console.log(response);
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      return response.data;
-    }, function(err) {
-      var res = {
-        codigo: 'error',
-        descripcion: 'Ocurrio un error en el servidor. Intenta más tarde'
+    }
+  })
+
+  .factory('UsrAuth', function($http, $rootScope) {
+    service = {};
+    var UserDocument = {};
+
+    service.login = function(user, pass) {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Seguridad/validatePass',
+        method: 'POST',
+        data: 'usuario=' + user + '&clave=' + pass,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
       };
-      return res;
-    });
-    return promise;
-  };
-  service.changePass = function(user, pass, confirmPass) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Seguridad/changePass',
-      method: 'POST',
-      data: 'usuario=' + user + '&clave=' + pass + '&clave2=' + confirmPass,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
+      console.log($rootScope.urlBakcEnd);
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
+        console.log(response);
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        return response.data;
+      }, function(err) {
+        var res = {
+          codigo: 'error',
+          descripcion: 'Ocurrio un error en el servidor. Intenta más tarde'
+        };
+        return res;
+      });
+      return promise;
     };
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
-      console.log(response.data);
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      return response.data;
-    }, function(error) {
-      if (!error.Message) {
-        error.Message = "Ocurrio un error en el servidor"
-      }
-      var res = {
-        error: true,
-        mensaje: error.Message
+    service.changePass = function(user, pass, confirmPass) {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Seguridad/changePass',
+        method: 'POST',
+        data: 'usuario=' + user + '&clave=' + pass + '&clave2=' + confirmPass,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
       };
-      return res;
-    });
-    return promise;
-  };
-  service.ExisteUsuario = function(usuario) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Seguridad/ExisteUsuario',
-      method: 'POST',
-      data: 'usuario=' + usuario,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
+        console.log(response.data);
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = "Ocurrio un error en el servidor"
+        }
+        var res = {
+          error: true,
+          mensaje: error.Message
+        };
+        return res;
+      });
+      return promise;
     };
-    console.log(usuario);
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
+    service.ExisteUsuario = function(usuario) {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Seguridad/ExisteUsuario',
+        method: 'POST',
+        data: 'usuario=' + usuario,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+      };
+      console.log(usuario);
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
 
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      UserDocument = response.data;
-      console.log(UserDocument);
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        UserDocument = response.data;
+        console.log(UserDocument);
+        return UserDocument;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = "Ocurrio un error en el servidor"
+        }
+        var res = {
+          error: true,
+          mensaje: error.Message
+        };
+        return res;
+      });
+      return promise;
+    };
+    service.getUserDocument = function() {
       return UserDocument;
-    }, function(error) {
-      if (!error.Message) {
-        error.Message = "Ocurrio un error en el servidor"
-      }
-      var res = {
-        error: true,
-        mensaje: error.Message
-      };
-      return res;
-    });
-    return promise;
-  };
-  service.getUserDocument = function() {
-    return UserDocument;
-  };
-  service.generaPin = function(tipoId, nit) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Seguridad/GeneraPin/' + tipoId + "/" + nit,
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
     };
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
-
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      return response.data;
-    }, function(error) {
-      if (!error.Message) {
-        error.Message = "Ocurrio un error en el servidor"
-      }
-      var res = {
-        error: true,
-        mensaje: error.Message
+    service.generaPin = function(tipoId, nit) {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Seguridad/GeneraPin/' + tipoId + "/" + nit,
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
       };
-      return res;
-    });
-    return promise;
-  };
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
 
-  service.validaPin = function(tipoId, nit, pin) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Seguridad/ValidarPin',
-      method: 'POST',
-      data: 'tipo_doc=' + tipoId + '&cedula=' + nit + '&pin=' + pin,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = "Ocurrio un error en el servidor"
+        }
+        var res = {
+          error: true,
+          mensaje: error.Message
+        };
+        return res;
+      });
+      return promise;
     };
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
 
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      return response.data;
-    }, function(error) {
-      if (!error.Message) {
-        error.Message = "Ocurrio un error en el servidor"
-      }
-      var res = {
-        error: true,
-        mensaje: error.Message
+    service.validaPin = function(tipoId, nit, pin) {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Seguridad/ValidarPin',
+        method: 'POST',
+        data: 'tipo_doc=' + tipoId + '&cedula=' + nit + '&pin=' + pin,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
       };
-      return res;
-    });
-    return promise;
-  };
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
 
-  service.recuperaUsuario=function(tipoId, nit){
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Seguridad/getUserbyId',
-      method: 'POST',
-      data: 'tipo_id=' + tipoId + '&id=' + nit,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = "Ocurrio un error en el servidor"
+        }
+        var res = {
+          error: true,
+          mensaje: error.Message
+        };
+        return res;
+      });
+      return promise;
     };
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
 
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      return response.data;
-    }, function(error) {
-      if (!error.Message) {
-        error.Message = "Ocurrio un error en el servidor"
-      }
-      var res = {
-        error: true,
-        mensaje: error.Message
+    service.recuperaUsuario = function(tipoId, nit) {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Seguridad/getUserbyId',
+        method: 'POST',
+        data: 'tipo_id=' + tipoId + '&id=' + nit,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
       };
-      return res;
-    });
-    return promise;
-  };
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
 
-
-  service.getPreguntasVal = function(tipoId, nit) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Seguridad/GetPreguntasVal',
-      method: 'POST',
-      data: 'tipoId=' + tipoId + '&cedula=' + nit,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = "Ocurrio un error en el servidor"
+        }
+        var res = {
+          error: true,
+          mensaje: error.Message
+        };
+        return res;
+      });
+      return promise;
     };
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
 
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      return response.data;
-    }, function(error) {
-      if (!error.Message) {
-        error.Message = "Ocurrio un error en el servidor"
-      }
-      var res = {
-        error: true,
-        mensaje: error.Message
+
+    service.getPreguntasVal = function(tipoId, nit) {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Seguridad/GetPreguntasVal',
+        method: 'POST',
+        data: 'tipoId=' + tipoId + '&cedula=' + nit,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
       };
-      return res;
-    });
-    return promise;
-  };
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
 
-  service.resetPass = function(pass, confirmPass) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Seguridad/ResetearClave',
-      method: 'POST',
-      data: 'tipoId=' + UserDocument.tipo_doc + '&cedula=' + UserDocument.documento + '&clave=' + pass,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = "Ocurrio un error en el servidor"
+        }
+        var res = {
+          error: true,
+          mensaje: error.Message
+        };
+        return res;
+      });
+      return promise;
     };
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      return response.data;
-    }, function(error) {
-      if (!error.Message) {
-        error.Message = "Ocurrio un error en el servidor"
-      }
-      var res = {
-        error: true,
-        mensaje: error.Message
-      };
-      return res;
-    });
-    return promise;
-  };
 
-  service.GetTipoDoc = function() {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'User/GetTipoDoc',
-      method: 'GET',
-      data: '',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
-    };
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      return response.data;
-    }, function(error) {
-      if (!error.Message) {
-        error.Message = "Ocurrio un error en el servidor"
-      }
-      var res = {
-        error: true,
-        mensaje: error.Message
+    service.resetPass = function(pass, confirmPass) {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Seguridad/ResetearClave',
+        method: 'POST',
+        data: 'tipoId=' + UserDocument.tipo_doc + '&cedula=' + UserDocument.documento + '&clave=' + pass,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
       };
-      return res;
-    });
-    return promise;
-  };
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = "Ocurrio un error en el servidor"
+        }
+        var res = {
+          error: true,
+          mensaje: error.Message
+        };
+        return res;
+      });
+      return promise;
+    };
 
-  service.CreateUser = function(tipo_doc, documento, usuario, clave) {
-    var reqData = {
-      url: $rootScope.urlBakcEnd + 'Seguridad/CrearUsuarioClave',
-      method: 'POST',
-      data: 'tipoId=' + tipo_doc + '&cedula=' + documento + '&usuario=' + usuario + '&clave=' + clave,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
-    };
-    var promise = $http(reqData).then(function(response) {
-      // The then function here is an opportunity to modify the response
-      //products = response.data;
-      // The return value gets picked up by the then in the controller.
-      console.log(JSON.stringify(response.data));
-      return response.data;
-    }, function(error) {
-      if (!error.Message) {
-        error.Message = "Ocurrio un error en el servidor"
-      }
-      var res = {
-        error: true,
-        mensaje: error.Message
+    service.GetTipoDoc = function() {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'User/GetTipoDoc',
+        method: 'GET',
+        data: '',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
       };
-      return res;
-    });
-    return promise;
-  };
-  return service;
-})
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = "Ocurrio un error en el servidor"
+        }
+        var res = {
+          error: true,
+          mensaje: error.Message
+        };
+        return res;
+      });
+      return promise;
+    };
+
+    service.CreateUser = function(tipo_doc, documento, usuario, clave) {
+      var reqData = {
+        url: $rootScope.urlBakcEnd + 'Seguridad/CrearUsuarioClave',
+        method: 'POST',
+        data: 'tipoId=' + tipo_doc + '&cedula=' + documento + '&usuario=' + usuario + '&clave=' + clave,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+      };
+      var promise = $http(reqData).then(function(response) {
+        // The then function here is an opportunity to modify the response
+        //products = response.data;
+        // The return value gets picked up by the then in the controller.
+        console.log(JSON.stringify(response.data));
+        return response.data;
+      }, function(error) {
+        if (!error.Message) {
+          error.Message = "Ocurrio un error en el servidor"
+        }
+        var res = {
+          error: true,
+          mensaje: error.Message
+        };
+        return res;
+      });
+      return promise;
+    };
+    return service;
+  })
 
 
 
 angular.module('ionic.utils', [])
 
-.factory('$localstorage', ['$window', function($window) {
-  return {
-    set: function(key, value) {
-      $window.localStorage[key] = value;
-    },
-    get: function(key, defaultValue) {
-      return $window.localStorage[key] || defaultValue;
-    },
-    setObject: function(key, value) {
-      $window.localStorage[key] = JSON.stringify(value);
-    },
-    getObject: function(key) {
-      return JSON.parse($window.localStorage[key] || '{}');
-    },
-    clear: function (){
-      $window.localStorage.clear();
+  .factory('$localstorage', ['$window', function($window) {
+    return {
+      set: function(key, value) {
+        $window.localStorage[key] = value;
+      },
+      get: function(key, defaultValue) {
+        return $window.localStorage[key] || defaultValue;
+      },
+      setObject: function(key, value) {
+        $window.localStorage[key] = JSON.stringify(value);
+      },
+      getObject: function(key) {
+        return JSON.parse($window.localStorage[key] || '{}');
+      },
+      clear: function() {
+        $window.localStorage.clear();
+      }
     }
-  }
-}])
+  }])
 
-.factory('$loading', ['$ionicLoading', function($ionicLoading) {
-  return {
-    show: function() {
-      $ionicLoading.show({
-        template: '<ion-spinner icon="dots" style:"z-index:99"></ion-spinner><br />',
-        animation: 'fade-in',
-        showBackdrop: true,
-        maxWidth: 500,
-        showDelay: 100
-      });
-    },
-    hide: function() {
-      $ionicLoading.hide();
+  .factory('$loading', ['$ionicLoading', function($ionicLoading) {
+    return {
+      show: function() {
+        $ionicLoading.show({
+          template: '<ion-spinner icon="dots" style:"z-index:99"></ion-spinner><br />',
+          animation: 'fade-in',
+          showBackdrop: true,
+          maxWidth: 500,
+          showDelay: 100
+        });
+      },
+      hide: function() {
+        $ionicLoading.hide();
+      }
     }
-  }
-}])
+  }])
 
-.factory('$alert', ['$ionicPopup', function($ionicPopup) {
-  return {
-    showAlert: function(mensaje) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Error',
-        template: mensaje
-      });
+  .factory('$alert', ['$ionicPopup', function($ionicPopup) {
+    return {
+      showAlert: function(mensaje) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Error',
+          template: mensaje
+        });
 
-      alertPopup.then(function(res) {
+        alertPopup.then(function(res) {
 
-        console.log('bye');
-      });
-    },
+          console.log('bye');
+        });
+      },
 
-    showMessage: function(mensaje) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Mensaje',
-        template: mensaje
-      });
+      showMessage: function(mensaje) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Mensaje',
+          template: mensaje
+        });
 
-      alertPopup.then(function(res) {
+        alertPopup.then(function(res) {
 
-        console.log('bye');
-      });
+          console.log('bye');
+        });
+      }
     }
-  }
-}]);
+  }]);
 
 var test;
