@@ -24,7 +24,7 @@
             <div class="item item2">
               <div class="row row1">
                 <label>CVC</label>
-                <i style="padding-left: 5px"class="icon ion-ios-help"></i>
+                <i style="padding-left: 5px"class="icon ion-ios-help" ng-click="mostrarAyuda()"></i>
               </div>
               <div class="row row1">
                 <input type="text" id="cvc" name="ccCvc" ng-model="card.cvc" cc-type="paymentForm.ccNumber.$ccType" cc-cvc ng-required="true" placeholder="cvc"/>
@@ -93,5 +93,12 @@
   </br>
   </br>
   </div>
+  <script id="modal_cvcayuda.html" type="text/ng-template">
+              <div class="modal image-modal transparent" ng-click="closeModal()">
+                  <ion-pane class="transparent">
+                     <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
+                  </ion-pane>
+              </div>
+          </script>
   </ion-content>
 </ion-view>

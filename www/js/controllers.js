@@ -598,7 +598,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ChangePassCtrl', function($scope, UsrAuth, $localstorage, $rootScope, $alert, $state) {
+.controller('ChangePassCtrl', function($scope, UsrAuth, $localstorage, $rootScope, $alert, $state,ionicSuperPopup) {
   $scope.$on('$ionicView.beforeEnter', function(e) {
     $rootScope.checkIfUserIsLoged();
     $scope.name = $localstorage.getObject('user').nombre;
@@ -614,14 +614,14 @@ angular.module('starter.controllers', [])
         switch (response.codigo) {
           case "00":
             $state.go('auth.login');
-            $alert.showMessage(response.descripcion);
+            ionicSuperPopup.show("Serfinansa", response.descripcion, "success");
             break;
           default:
-            $alert.showAlert(response.descripcion);
+            ionicSuperPopup.show("Serfinansa", response.descripcion, "error");
         }
 
       } else {
-        $alert.showAlert(response.mensaje);
+        ionicSuperPopup.show("Serfinansa", response.mensaje, "error");
       }
     });
   }
@@ -1077,13 +1077,48 @@ angular.module('starter.controllers', [])
     }
   })
 
-  .controller('ConfirGiroController', function($scope,$rootScope, $state, $stateParams,$ionicHistory , $localstorage, $window, $loading, $alert, $ionicPopup, Giros) {
+  .controller('ConfirGiroController', function($scope,$rootScope, $state, $stateParams,$ionicHistory , $localstorage, $window, $loading, $alert, $ionicPopup,$ionicModal, Giros,ionicSuperPopup) {
     $scope.tarjeta=$localstorage.getObject('master_cta').Numero;
     var giro = {}
     $scope.submitted=false;
     $scope.$on('$ionicView.beforeEnter', function(e) {
         giro=$stateParams.giro;
         $scope.giro=giro;
+    });
+
+    $scope.mostrarAyuda=function(){
+      $scope.openModal();
+    },
+    $scope.imageSrc = 'https://app.serfinansa.com.co/img/ayuda_cvc2.png';
+    $ionicModal.fromTemplateUrl('modal_cvcayuda.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+
+    $scope.openModal = function() {
+      $scope.modal.show();
+    };
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hide', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+    $scope.$on('modal.shown', function() {
+      console.log('Modal is shown!');
     });
 
     $scope.confirmar= function(card, isValid){
@@ -1103,12 +1138,19 @@ angular.module('starter.controllers', [])
           Giros.Confirmar(data).then(function(respuesta){
             if (typeof respuesta != 'undefined'){
               $loading.hide();
-              var alertPopup = $ionicPopup.alert({
-                 title: 'Gira Más',
-                 template: respuesta.descripcion
-              });
-
-              alertPopup.then(function(res) {
+              var tipo='';
+              if(respuesta.codigo==='000'){
+                tipo='success';
+              }else{
+                tipo='error';
+              }
+              ionicSuperPopup.show({
+                 title: "Gira Más",
+                 text: respuesta.descripcion,
+                 type: tipo,
+                 showCancelButton: false,
+                 closeOnConfirm: true},
+              function(){
                 $rootScope.otpValido=false;
                 $ionicHistory.nextViewOptions({
                   disableAnimate: false,
@@ -1150,7 +1192,7 @@ angular.module('starter.controllers', [])
 
 
   })
-  .controller('RegistroClaveDinamicaCtrl', function($scope, $state, $stateParams, $localstorage, $window, $loading, $alert,$ionicPopup,ClaveDinamica) {
+  .controller('RegistroClaveDinamicaCtrl', function($scope, $state, $stateParams, $localstorage, $window, $loading, $alert,$ionicPopup,ClaveDinamica,ionicSuperPopup) {
     $scope.$on('$ionicView.beforeEnter', function(e) {
       $scope.name = $localstorage.getObject('user').nombre;
       $scope.ip = $localstorage.getObject('user').ip;
@@ -1165,10 +1207,11 @@ angular.module('starter.controllers', [])
         $loading.show();
         ClaveDinamica.Registrar(registro).then(function(respuesta){
           if (typeof respuesta != 'undefined'){
-            var alertPopup = $ionicPopup.alert({
-               title: 'Serfinansa',
-               template: respuesta.descripcion
-            });
+            if(respuesta.codigo==='000'){
+              ionicSuperPopup.show("Serfinansa", respuesta.descripcion, "success");
+            }else {
+              ionicSuperPopup.show("Serfinansa", respuesta.descripcion, "error");
+            }
             $loading.hide();
           }
         })
@@ -1178,10 +1221,6 @@ angular.module('starter.controllers', [])
     $scope.back = function(){
       $state.go($stateParams.state);
     }
-
-
-
-
   })
 
   ;

@@ -6,9 +6,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controllers', 'starter.services', 'starter.filters', 'ionic.utils','ui.mask', 'starter.directives', 'credit-cards'])
+angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controllers', 'starter.services', 'starter.filters', 'ionic.utils','ui.mask', 'starter.directives', 'credit-cards','cera.ionicSuperPopup'])
 
-.run(function($ionicPlatform,$ionicModal, $ionicHistory,$window, $ionicViewService, $localstorage, $rootScope, $state, Idle, $ionicPopup,$ionicPush,$http, $loading, $alert, ClaveDinamica) {
+.run(function($ionicPlatform,$ionicModal, $ionicHistory,$window, $ionicViewService, $localstorage, $rootScope, $state, Idle, $ionicPopup,$ionicPush,$http, $loading, $alert, ClaveDinamica,ionicSuperPopup) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -31,7 +31,9 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
 
   $rootScope.logout = function() {
     console.log("loging out user");
-    $rootScope.modal.hide();
+    if($rootScope.modalAbiero){
+      $rootScope.modal.hide();
+    }
     $rootScope.otpValido=false;
     $state.go('auth.login');
     $localstorage.clear();
@@ -39,6 +41,7 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'ngIdle', 'starter.controller
   };
 
 $rootScope.modalClaveDinamica = function() {
+  $rootScope.modalAbiero=false;
   $ionicModal.fromTemplateUrl('templates/clavedinamica.html', {
     scope: $rootScope,
     animation: 'slide-in-up'
@@ -46,9 +49,11 @@ $rootScope.modalClaveDinamica = function() {
    $rootScope.modal = modal;
    $rootScope.openModal = function() {
       $rootScope.modal.show();
+      $rootScope.modalAbiero=true;
       };
       $rootScope.closeModal = function() {
         $rootScope.modal.hide();
+        $rootScope.modalAbiero=false;
       };
       $rootScope.$on('$destroy', function() {
         //$scope.modal.remove();
@@ -68,12 +73,17 @@ $rootScope.modalClaveDinamica = function() {
             $rootScope.otpValido=true;
             $loading.hide();
           }else{
-            $alert.showAlert(respuesta.descripcion);
             $loading.hide();
+            var alertPopup = $ionicPopup.alert({
+               title: 'Serfinansa',
+               template: respuesta.descripcion
+            });
           }
         });
     }
   }
+
+
 
   $rootScope.generarClaveDinamica=function(data){
     $loading.show();
@@ -81,10 +91,16 @@ $rootScope.modalClaveDinamica = function() {
       if(respuesta.codigo==='002'){
         $loading.hide();
         var alertPopup = $ionicPopup.alert({
-           title: 'Giramas',
+           title: 'Serfinansa',
            template: respuesta.descripcion
         });
       }else if(respuesta.codigo==='000'){
+        $loading.hide();
+      }else{
+        var alertPopup = $ionicPopup.alert({
+           title: 'Serfinansa',
+           template: respuesta.descripcion
+        });
         $loading.hide();
       }
     })
@@ -118,14 +134,7 @@ $rootScope.modalClaveDinamica = function() {
     console.log("Idle timeout");
     $rootScope.logout();
     $state.go('auth.login');
-    var alertPopup = $ionicPopup.alert({
-      title: 'Sesión',
-      template: 'Sesión cerrada por inactividad'
-    });
-
-    alertPopup.then(function(res) {
-      console.log('Sesion cerrda');
-    });
+    ionicSuperPopup.show("Serfinansa", "Sessión cerrada por inactividad", "warning");
 
   });
 
