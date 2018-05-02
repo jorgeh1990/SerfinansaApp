@@ -2,8 +2,8 @@
 
 
   <ion-content class="has-header">
-    <div class="flex-header center" style="background-color: white">
-      <div class="center"><img src="/img/giramas_logo_120.png" class="subtitle-image-header" /></div>
+    <div class="subtitle-image-header">
+      <img src="img/giramas.png" />
     </div>
     <ion-item class="item-text-wrap" style="boder: 0px !important">
       <p>El valor total del giro y de la comisi&oacute;n se debitar&aacute; de tu Tarjeta Ol&iacute;mpica.</p>
@@ -45,13 +45,6 @@
                <p class="input-label">Repita el valor del giro</p>
                <input class="input1" type="text" ng-required="true" name="valor2" placeholder="Repita el valor del giro" pattern="[0-9]*" inputmode="numeric" min="20000" max="700000"  ng-model='beneficiario.valor2' real-time-currency>
             </label>
-
-
-            <div class="form-group" ng-class="{ 'has-error' : formularioGiro.email.$invalid && !formularioGiro.email.$pristine }">
-              <label>Email</label>
-              <input type="email" name="email" class="form-control" ng-model="user.email">
-              <p ng-show="formularioGiro.email.$invalid && !formularioGiro.email.$pristine" class="help-block">Enter a valid email.</p>
-            </div>
           </div>
           <div class="item item-divider">
             <button class="button1" ng-click="continuar(beneficiario, formularioGiro.$valid)">
