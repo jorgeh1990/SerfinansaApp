@@ -366,7 +366,11 @@ angular.module('starter.controllers', [])
       if (tar_ant != '' && tar_nue != '') {
         Servicios.activarTarjeta(tar_ant, tar_nue).then(function(response) {
           if (!response.error) {
+            if(response.codigo === '000'){
             ionicSuperPopup.show("Serfinansa", "Transacción exitosa", "success");
+          }else{
+            ionicSuperPopup.show("Serfinansa", response.data.descripcion, "error");
+          }
           } else {
             ionicSuperPopup.show("Serfinansa", response.mensaje, "error");
           }
@@ -1056,7 +1060,7 @@ angular.module('starter.controllers', [])
 
   })
 
-  .controller('GiroController', function($scope, $ionicModal, $rootScope, $state, $stateParams, $localstorage, $window, $loading, $alert, Giros) {
+  .controller('GiroController', function($scope, $ionicModal, $rootScope, $state, $stateParams, $localstorage, $window, $loading, $alert, Giros, ionicSuperPopup) {
     $scope.$on('$ionicView.beforeEnter', function(e) {
       if (!$rootScope.otpValido) {
         $rootScope.generarClaveDinamica();
@@ -1070,6 +1074,16 @@ angular.module('starter.controllers', [])
     $scope.continuar = function(beneficiario, isValid) {
       $scope.submitted = true;
       if (typeof beneficiario != 'undefined' && isValid) {
+        if(beneficiario.valor !== beneficiario.valor2){
+          ionicSuperPopup.show({
+              title: "Gira Más",
+              text: "No coincide el valor del giro.",
+              type: 'error',
+              showCancelButton: false,
+              closeOnConfirm: true
+          });
+            return;
+        }
         $loading.show();
         var giro;
         Giros.Consultar(beneficiario).then(function(respuesta) {
@@ -1080,7 +1094,13 @@ angular.module('starter.controllers', [])
             });
             $loading.hide();
           } else {
-            $alert.showAlert(respuesta.descripcion);
+            ionicSuperPopup.show({
+                title: "Gira Más",
+                text: respuesta.descripcion,
+                type: 'error',
+                showCancelButton: false,
+                closeOnConfirm: true
+              });
             $loading.hide();
           }
         });

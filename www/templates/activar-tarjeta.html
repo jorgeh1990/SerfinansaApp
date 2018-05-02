@@ -12,14 +12,16 @@
     </span>
     <div class="card">
       <div class="item item-divider">
-        Datos de Tarjeta Ol&iacute;mpica
+        Activaci&oacute;n de Tarjeta Ol&iacute;mpica
       </div>
       <div class="padding center">
-        <label lass="item-input-wrapper item-input input1">
-        	<input type="text" placeholder="N&uacute;mero tarjeta nueva" ng-model="tar_nue">
+        <label class="item item-input item-floating-label">
+          <p class="input-label label1">N&uacute;mero tarjeta nueva</p>
+        	<input class="input1" type="text" pattern="[0-9]*"  placeholder="N&uacute;mero tarjeta nueva" ng-model="tar_nue" ui-mask="9999 9999 9999 9999" inputmode="numeric" ui-mask-placeholder ui-mask-placeholder-char="_">
         </label>
-        <label lass="item-input-wrapper item-input input1">
-        	<input type="text" placeholder="N&uacute;mero tarjeta anterior" ng-model="tar_ant">
+        <label class="item item-input item-floating-label">
+          <p class="input-label label1">N&uacute;mero tarjeta anterior</p>
+        	<input class="input1" type="text" pattern="[0-9]*"  placeholder="N&uacute;mero tarjeta anterior" ng-model="tar_ant" ui-mask="9999 9999 9999 9999" inputmode="numeric" ui-mask-placeholder ui-mask-placeholder-char="_">
         </label>
         <button class="button1" ng-click="activar(tar_ant, tar_nue)">
         	Activar

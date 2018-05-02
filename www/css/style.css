@@ -675,6 +675,11 @@ a .extracto {}
   height: 100%;
 }
 
+.subtitle-image-header {
+  width: 120px;
+  height: 100%;
+}
+
 .flex-header {
   display: flex;
   justify-content: center;
