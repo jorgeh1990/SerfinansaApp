@@ -1,10 +1,10 @@
 <ion-view view-title='<img class="title-image" src="img/logos-01.png" />'>
-  <ion-content>
+  <ion-content class="has-header ">
     <span class="nombre">{{name}}<br />
     <span class="header-info" >Último ingreso {{ingreso}} Ip: {{ip}}</span></span>
     {{mensaje}}
-    <div class="credito_rota" ng-if="tieneCred">
-      <h4>Solicitar Crédito Rotativo</h4>
+    <div class="credito_rota padding center" ng-if="tieneCred">
+      <h3>Solicitar Crédito Rotativo</h3>
 
       <span class="labelinfo">Crédito Origen: </span><span class="infobox">&nbsp; {{credito.Numero_Tarjeta}}</span>
       <span class="labelinfo">Disponible: </span><span class="infobox">$ {{credito.Disponible | number:0}} </span>
@@ -13,17 +13,24 @@
       <div class="movimientos_cro">
 
         <label class="item item-input">
-          <input type="number" placeholder="Monto" ng-model="monto">
+          <input placeholder="Monto" ng-model="monto"  type="text" ng-required="true" real-time-currency>
         </label>
-
-        <a class="button button-block button-positive" ng-click="solicitar(monto)">
+        <br/>
+        <button class="button1" ng-click="solicitar(monto)">
                 Solicitar Crédito
-            </a>
+        </button>
       </div>
     </div>
 
-    <div class="" ng-if="!tieneCred">
-      {{credito.descripcion}}
+    <div class="padding center" ng-if="!tieneCred">
+      <div class="row">
+          <div class="col">
+              <div class="text-center">
+                  <img src="img/search_128.png"></img>
+                  <h5 style="text-align: center;">{{credito.descripcion}}</h5>
+              </div>
+          </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>

@@ -531,7 +531,7 @@ angular.module('starter.controllers', [])
     };
   })
 
-  .controller('DesemDetCtrl', function($scope, $localstorage, Desembolso, $rootScope, $state, $loading, $alert) {
+  .controller('DesemDetCtrl', function($scope, $localstorage, Desembolso, $rootScope, $state, $loading, $alert, ionicSuperPopup) {
     var credito = {};
     $scope.$on('$ionicView.beforeEnter', function(e) {
       $rootScope.checkIfUserIsLoged();
@@ -556,14 +556,14 @@ angular.module('starter.controllers', [])
         Desembolso.desembolsaCredito($localstorage.getObject('user'), $scope.credito.Numero_Tarjeta, monto).then(function(response) {
           $loading.hide();
           if (!response.errorInfo) {
-            $alert.showMessage(response.responseData.descripcion);
+            ionicSuperPopup.show("Serfinansa", response.responseData.descripcion, "success");
           } else {
-            $alert.showAlert(response.responseData.descripcion);
+            ionicSuperPopup.show("Serfinansa", response.responseData.descripcion, "error");
           }
         });
       } else {
         $loading.hide();
-        $alert.showAlert("Debe Ingresar el monto a solicitar.")
+        ionicSuperPopup.show("Serfinansa", "Por favor ingresa el monto a desembolsar.", "warning");
       }
 
     };

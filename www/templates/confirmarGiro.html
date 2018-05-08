@@ -1,9 +1,9 @@
 <ion-view cache-view="false" view-title='<img class="title-image" src="img/logos-01.png" />'>
   <ion-content class="has-header">
-    <div class="flex-header center" style="background-color: white">
-      <div class="center"><img src="/img/giramas_logo_120.png" class="subtitle-image-header" /></div>
-    </div>
     <div class="padding center">
+      <div class="subtitle-image-header">
+        <img src="img/giramas.png" />
+      </div>
 
       <div class="center-text">
         <h4></h4>
@@ -22,11 +22,11 @@
             </div>
             <div class="item item2">
               <div class="row row1">
-                <label>CVC</label>
+                <label>C&oacute;digo de seguridad</label>
                 <i style="padding-left: 5px" class="icon ion-ios-help" ng-click="mostrarAyuda()"></i>
               </div>
               <div class="row row1">
-                <input type="text" id="cvc" name="ccCvc" ng-model="card.cvc" cc-type="paymentForm.ccNumber.$ccType" cc-cvc ng-required="true" placeholder="cvc" />
+                <input type="text" pattern="[0-9]*" id="cvc" name="ccCvc" ng-model="card.cvc" cc-type="paymentForm.ccNumber.$ccType" cc-cvc ng-required="true" placeholder="C&oacute;digo de seguridad" />
               </div>
             </div>
             <div class="item item2">
