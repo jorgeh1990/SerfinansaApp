@@ -261,10 +261,6 @@ angular.module('starter.services', [])
       id: 2,
       name: 'Activación clave de avance tarjeta MasterCard',
       url: 'master-actpin'
-    }, {
-      id: 3,
-      name: 'Enviar giro',
-      url: 'ColcarGiro'
     }];
     //,{id: 2, name: 'Bloqueo Tarjeta Débito'}
     var tcros = [];
