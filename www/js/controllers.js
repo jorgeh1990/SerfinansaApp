@@ -240,6 +240,10 @@ angular.module('starter.controllers', [])
           for (var i = 0; i < response.length; i++) {
             if (response[i].Numero.match("^543280") || response[i].Numero.match("^542060")) {
               $localstorage.setObject('master_cta', response[i]);
+              $localstorage.setObject('tarjeta_giros', response[i]);
+            }
+            if(response[i].Numero.match("^636853")){
+              $localstorage.setObject('tarjeta_giros', response[i]);
             }
           }
           var prods = $scope.products;
@@ -1117,7 +1121,7 @@ angular.module('starter.controllers', [])
   })
 
   .controller('ConfirGiroController', function($scope, $rootScope, $state, $stateParams, $ionicHistory, $localstorage, $window, $loading, $alert, $ionicPopup, $ionicModal, Giros, ionicSuperPopup) {
-    $scope.tarjeta = $localstorage.getObject('master_cta').Numero;
+    $scope.tarjeta = $localstorage.getObject('tarjeta_giros').Numero;
     var giro = {}
     $scope.submitted = false;
     $scope.$on('$ionicView.beforeEnter', function(e) {
